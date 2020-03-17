@@ -1,0 +1,3325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ttFont sfntVersion="\x00\x01\x00\x00" ttLibVersion="3.0">
+
+  <GlyphOrder>
+    <!-- The 'id' attribute is only for humans; it is ignored when parsed. -->
+    <GlyphID id="0" name=".notdef"/>
+    <GlyphID id="1" name="glyph00001"/>
+    <GlyphID id="2" name="glyph00002"/>
+    <GlyphID id="3" name="glyph00003"/>
+    <GlyphID id="4" name="glyph00004"/>
+  </GlyphOrder>
+
+  <head>
+    <!-- Most of this table will be recalculated by the compiler -->
+    <tableVersion value="1.0"/>
+    <fontRevision value="2.00699"/>
+    <checkSumAdjustment value="0x1c157bef"/>
+    <magicNumber value="0x5f0f3cf5"/>
+    <flags value="00000000 00011011"/>
+    <unitsPerEm value="2000"/>
+    <created value="Fri Jan 22 17:43:08 2010"/>
+    <modified value="Thu Feb 27 03:42:25 2014"/>
+    <xMin value="-959"/>
+    <yMin value="-527"/>
+    <xMax value="2683"/>
+    <yMax value="2110"/>
+    <macStyle value="00000000 00000000"/>
+    <lowestRecPPEM value="9"/>
+    <fontDirectionHint value="2"/>
+    <indexToLocFormat value="0"/>
+    <glyphDataFormat value="0"/>
+  </head>
+
+  <hhea>
+    <tableVersion value="1.0"/>
+    <ascent value="1974"/>
+    <descent value="-426"/>
+    <lineGap value="0"/>
+    <advanceWidthMax value="2760"/>
+    <minLeftSideBearing value="-959"/>
+    <minRightSideBearing value="-959"/>
+    <xMaxExtent value="2683"/>
+    <caretSlopeRise value="1"/>
+    <caretSlopeRun value="0"/>
+    <caretOffset value="0"/>
+    <reserved0 value="0"/>
+    <reserved1 value="0"/>
+    <reserved2 value="0"/>
+    <reserved3 value="0"/>
+    <metricDataFormat value="0"/>
+    <numberOfHMetrics value="5"/>
+  </hhea>
+
+  <maxp>
+    <!-- Most of this table will be recalculated by the compiler -->
+    <tableVersion value="0x10000"/>
+    <numGlyphs value="5"/>
+    <maxPoints value="202"/>
+    <maxContours value="16"/>
+    <maxCompositePoints value="143"/>
+    <maxCompositeContours value="7"/>
+    <maxZones value="2"/>
+    <maxTwilightPoints value="80"/>
+    <maxStorage value="96"/>
+    <maxFunctionDefs value="114"/>
+    <maxInstructionDefs value="0"/>
+    <maxStackElements value="233"/>
+    <maxSizeOfInstructions value="2862"/>
+    <maxComponentElements value="4"/>
+    <maxComponentDepth value="1"/>
+  </maxp>
+
+  <OS_2>
+    <!-- The fields 'usFirstCharIndex' and 'usLastCharIndex'
+         will be recalculated by the compiler -->
+    <version value="4"/>
+    <xAvgCharWidth value="1073"/>
+    <usWeightClass value="300"/>
+    <usWidthClass value="5"/>
+    <fsType value="00000000 00000000"/>
+    <ySubscriptXSize value="1400"/>
+    <ySubscriptYSize value="1300"/>
+    <ySubscriptXOffset value="0"/>
+    <ySubscriptYOffset value="280"/>
+    <ySuperscriptXSize value="1400"/>
+    <ySuperscriptYSize value="1300"/>
+    <ySuperscriptXOffset value="0"/>
+    <ySuperscriptYOffset value="954"/>
+    <yStrikeoutSize value="120"/>
+    <yStrikeoutPosition value="500"/>
+    <sFamilyClass value="2051"/>
+    <panose>
+      <bFamilyType value="2"/>
+      <bSerifStyle value="15"/>
+      <bWeight value="4"/>
+      <bProportion value="2"/>
+      <bContrast value="2"/>
+      <bStrokeVariation value="2"/>
+      <bArmStyle value="4"/>
+      <bLetterForm value="3"/>
+      <bMidline value="2"/>
+      <bXHeight value="3"/>
+    </panose>
+    <ulUnicodeRange1 value="11100001 00000000 00000010 11111111"/>
+    <ulUnicodeRange2 value="01010000 00000000 11101100 11111111"/>
+    <ulUnicodeRange3 value="00000000 00000000 00000000 00001001"/>
+    <ulUnicodeRange4 value="00000000 00000000 00000000 00000000"/>
+    <achVendID value="tyPL"/>
+    <fsSelection value="00000000 11000000"/>
+    <usFirstCharIndex value="0"/>
+    <usLastCharIndex value="65279"/>
+    <sTypoAscender value="1610"/>
+    <sTypoDescender value="-390"/>
+    <sTypoLineGap value="400"/>
+    <usWinAscent value="1974"/>
+    <usWinDescent value="426"/>
+    <ulCodePageRange1 value="00100000 00000000 00000001 10011111"/>
+    <ulCodePageRange2 value="00000000 00000000 00000000 00000000"/>
+    <sxHeight value="995"/>
+    <sCapHeight value="1415"/>
+    <usDefaultChar value="0"/>
+    <usBreakChar value="32"/>
+    <usMaxContext value="11"/>
+  </OS_2>
+
+  <hmtx>
+    <mtx name=".notdef" width="1025" lsb="47"/>
+    <mtx name="glyph00001" width="1165" lsb="54"/>
+    <mtx name="glyph00002" width="800" lsb="311"/>
+    <mtx name="glyph00003" width="1165" lsb="54"/>
+    <mtx name="glyph00004" width="902" lsb="0"/>
+  </hmtx>
+
+  <cmap>
+    <tableVersion version="0"/>
+  </cmap>
+
+  <fpgm>
+    <assembly>
+      PUSH[ ]	/* 1 value pushed */
+      0
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      NEQ[ ]	/* NotEqual */
+      IF[ ]	/* If */
+      RCVT[ ]	/* ReadCVT */
+      EIF[ ]	/* EndIf */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      PUSH[ ]	/* 1 value pushed */
+      14
+      LTEQ[ ]	/* LessThenOrEqual */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      PUSH[ ]	/* 1 value pushed */
+      6
+      GTEQ[ ]	/* GreaterThanOrEqual */
+      AND[ ]	/* LogicalAnd */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      52
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      40
+      EIF[ ]	/* EndIf */
+      ADD[ ]	/* Add */
+      FLOOR[ ]	/* Floor */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      NEQ[ ]	/* NotEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 2 values pushed */
+      2048 2048
+      MUL[ ]	/* Multiply */
+      MUL[ ]	/* Multiply */
+      SWAP[ ]	/* SwapTopStack */
+      DIV[ ]	/* Divide */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      RS[ ]	/* ReadStore */
+      SWAP[ ]	/* SwapTopStack */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 0
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      32
+      ADD[ ]	/* Add */
+      FLOOR[ ]	/* Floor */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      ABS[ ]	/* Absolute */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      192
+      LT[ ]	/* LessThan */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      MINDEX[ ]	/* MoveXToTopStack */
+      AND[ ]	/* LogicalAnd */
+      PUSH[ ]	/* 3 values pushed */
+      40 1 10
+      RS[ ]	/* ReadStore */
+      RCVT[ ]	/* ReadCVT */
+      MUL[ ]	/* Multiply */
+      RCVT[ ]	/* ReadCVT */
+      GT[ ]	/* GreaterThan */
+      OR[ ]	/* LogicalOr */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      ELSE[ ]	/* Else */
+      ROLL[ ]	/* RollTopThreeStack */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      80
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      EIF[ ]	/* EndIf */
+      ELSE[ ]	/* Else */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 2 values pushed */
+      1 10
+      RS[ ]	/* ReadStore */
+      RCVT[ ]	/* ReadCVT */
+      MUL[ ]	/* Multiply */
+      RCVT[ ]	/* ReadCVT */
+      SUB[ ]	/* Subtract */
+      ABS[ ]	/* Absolute */
+      PUSH[ ]	/* 1 value pushed */
+      40
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 2 values pushed */
+      1 10
+      RS[ ]	/* ReadStore */
+      RCVT[ ]	/* ReadCVT */
+      MUL[ ]	/* Multiply */
+      RCVT[ ]	/* ReadCVT */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      48
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      48
+      EIF[ ]	/* EndIf */
+      ELSE[ ]	/* Else */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      192
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      FLOOR[ ]	/* Floor */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      ADD[ ]	/* Add */
+      ELSE[ ]	/* Else */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      32
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      ADD[ ]	/* Add */
+      ELSE[ ]	/* Else */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      ADD[ ]	/* Add */
+      ELSE[ ]	/* Else */
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      NEG[ ]	/* Negate */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      RCVT[ ]	/* ReadCVT */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      SUB[ ]	/* Subtract */
+      ABS[ ]	/* Absolute */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      RS[ ]	/* ReadStore */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      6
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      FDEF[ ]	/* FunctionDefinition */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ABS[ ]	/* Absolute */
+      PUSH[ ]	/* 2 values pushed */
+      5 98
+      WS[ ]	/* WriteStore */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      6
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 2 values pushed */
+      1 10
+      RS[ ]	/* ReadStore */
+      RCVT[ ]	/* ReadCVT */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      ADD[ ]	/* Add */
+      RCVT[ ]	/* ReadCVT */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      6
+      RS[ ]	/* ReadStore */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      48 5
+      CINDEX[ ]	/* CopyXToTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      LTEQ[ ]	/* LessThenOrEqual */
+      IF[ ]	/* If */
+      ADD[ ]	/* Add */
+      LT[ ]	/* LessThan */
+      ELSE[ ]	/* Else */
+      SUB[ ]	/* Subtract */
+      GT[ ]	/* GreaterThan */
+      EIF[ ]	/* EndIf */
+      IF[ ]	/* If */
+      SWAP[ ]	/* SwapTopStack */
+      EIF[ ]	/* EndIf */
+      POP[ ]	/* PopTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      GTEQ[ ]	/* GreaterThanOrEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      EIF[ ]	/* EndIf */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      NEG[ ]	/* Negate */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      7
+      RS[ ]	/* ReadStore */
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 3 values pushed */
+      0 2 0
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      6
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      7
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      7
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      RCVT[ ]	/* ReadCVT */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      7 11 0
+      RS[ ]	/* ReadStore */
+      RCVT[ ]	/* ReadCVT */
+      WS[ ]	/* WriteStore */
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 0
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      9
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      RS[ ]	/* ReadStore */
+      SWAP[ ]	/* SwapTopStack */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 0
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      RCVT[ ]	/* ReadCVT */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      RCVT[ ]	/* ReadCVT */
+      ROLL[ ]	/* RollTopThreeStack */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      ABS[ ]	/* Absolute */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      32
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      48
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      32
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      NEG[ ]	/* Negate */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      CINDEX[ ]	/* CopyXToTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      12
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      2 2
+      RCVT[ ]	/* ReadCVT */
+      PUSH[ ]	/* 1 value pushed */
+      100
+      SUB[ ]	/* Subtract */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      12
+      RS[ ]	/* ReadStore */
+      MD[1]	/* MeasureDistance */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      12
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      RS[ ]	/* ReadStore */
+      MD[1]	/* MeasureDistance */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      14
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      16
+      DIV[ ]	/* Divide */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      MUL[ ]	/* Multiply */
+      ROLL[ ]	/* RollTopThreeStack */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      14
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      14
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      SWAP[ ]	/* SwapTopStack */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      15
+      FDEF[ ]	/* FunctionDefinition */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      4 100
+      WCVTP[ ]	/* WriteCVTInPixels */
+      EIF[ ]	/* EndIf */
+      DEPTH[ ]	/* GetDepthStack */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      NEG[ ]	/* Negate */
+      SWAP[ ]	/* SwapTopStack */
+      JROT[ ]	/* JumpRelativeOnTrue */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      16
+      FDEF[ ]	/* FunctionDefinition */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      LTEQ[ ]	/* LessThenOrEqual */
+      IF[ ]	/* If */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      GTEQ[ ]	/* GreaterThanOrEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      4 100
+      WCVTP[ ]	/* WriteCVTInPixels */
+      EIF[ ]	/* EndIf */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      DEPTH[ ]	/* GetDepthStack */
+      PUSH[ ]	/* 1 value pushed */
+      19
+      NEG[ ]	/* Negate */
+      SWAP[ ]	/* SwapTopStack */
+      JROT[ ]	/* JumpRelativeOnTrue */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      17
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      0 15
+      RS[ ]	/* ReadStore */
+      NEQ[ ]	/* NotEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      15 15
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SUB[ ]	/* Subtract */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      14
+      CALL[ ]	/* CallFunction */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 2 values pushed */
+      12 2
+      CINDEX[ ]	/* CopyXToTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 2 values pushed */
+      13 2
+      CINDEX[ ]	/* CopyXToTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SZPS[ ]	/* SetZonePointerS */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      CINDEX[ ]	/* CopyXToTopStack */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      1 0
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      WS[ ]	/* WriteStore */
+      ROLL[ ]	/* RollTopThreeStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 2 values pushed */
+      1 0
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      12
+      RS[ ]	/* ReadStore */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      13
+      RS[ ]	/* ReadStore */
+      GC[1]	/* GetCoordOnPVector */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 2 values pushed */
+      0 0
+      SZP0[ ]	/* SetZonePointer0 */
+      SWAP[ ]	/* SwapTopStack */
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      MIAP[0]	/* MoveIndirectAbsPt */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 1
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      18
+      FDEF[ ]	/* FunctionDefinition */
+      SVTCA[0]	/* SetFPVectorToAxis */
+      PUSH[ ]	/* 2 values pushed */
+      0 2
+      RCVT[ ]	/* ReadCVT */
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      15
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      DUP[ ]	/* DuplicateTopStack */
+      RCVT[ ]	/* ReadCVT */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      DUP[ ]	/* DuplicateTopStack */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 6 values pushed */
+      16 16 1 0 14 0
+      WS[ ]	/* WriteStore */
+      WS[ ]	/* WriteStore */
+      ROLL[ ]	/* RollTopThreeStack */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 2 values pushed */
+      17 6
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      113
+      CALL[ ]	/* CallFunction */
+      ELSE[ ]	/* Else */
+      CLEAR[ ]	/* ClearStack */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      19
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      0 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      20
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      1 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      21
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      2 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      22
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      3 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      23
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      4 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      24
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      5 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      25
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      6 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      26
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      7 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      27
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      8 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      28
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      9 18
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      29
+      FDEF[ ]	/* FunctionDefinition */
+      SVTCA[0]	/* SetFPVectorToAxis */
+      PUSH[ ]	/* 1 value pushed */
+      12
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      0 2
+      RCVT[ ]	/* ReadCVT */
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      15
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      DUP[ ]	/* DuplicateTopStack */
+      RCVT[ ]	/* ReadCVT */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      10
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      ADD[ ]	/* Add */
+      WS[ ]	/* WriteStore */
+      DUP[ ]	/* DuplicateTopStack */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 6 values pushed */
+      16 16 1 0 14 0
+      WS[ ]	/* WriteStore */
+      WS[ ]	/* WriteStore */
+      ROLL[ ]	/* RollTopThreeStack */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 2 values pushed */
+      17 6
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      113
+      CALL[ ]	/* CallFunction */
+      ELSE[ ]	/* Else */
+      CLEAR[ ]	/* ClearStack */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      30
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      0 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      31
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      1 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      32
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      2 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      33
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      3 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      34
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      4 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      35
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      5 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      36
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      6 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      37
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      7 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      38
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      8 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      39
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      9 29
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      40
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      41
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      16
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      RS[ ]	/* ReadStore */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      40
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      POP[ ]	/* PopTopStack */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      42
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      41
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      41
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      43
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      NEQ[ ]	/* NotEqual */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      44
+      FDEF[ ]	/* FunctionDefinition */
+      SVTCA[0]	/* SetFPVectorToAxis */
+      PUSH[ ]	/* 2 values pushed */
+      0 2
+      RCVT[ ]	/* ReadCVT */
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      43
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SZP2[ ]	/* SetZonePointer2 */
+      IUP[0]	/* InterpolateUntPts */
+      ELSE[ ]	/* Else */
+      CLEAR[ ]	/* ClearStack */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      45
+      FDEF[ ]	/* FunctionDefinition */
+      SVTCA[0]	/* SetFPVectorToAxis */
+      PUSH[ ]	/* 1 value pushed */
+      12
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      0 2
+      RCVT[ ]	/* ReadCVT */
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      43
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SZP2[ ]	/* SetZonePointer2 */
+      IUP[0]	/* InterpolateUntPts */
+      ELSE[ ]	/* Else */
+      CLEAR[ ]	/* ClearStack */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      46
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      SHC[1]	/* ShiftContourByLastPt */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      ADD[ ]	/* Add */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      47
+      FDEF[ ]	/* FunctionDefinition */
+      SVTCA[0]	/* SetFPVectorToAxis */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      RCVT[ ]	/* ReadCVT */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 5 values pushed */
+      0 0 0 0 0
+      WCVTP[ ]	/* WriteCVTInPixels */
+      MIAP[0]	/* MoveIndirectAbsPt */
+      SWAP[ ]	/* SwapTopStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      PUSH[ ]	/* 2 values pushed */
+      46 1
+      SZP2[ ]	/* SetZonePointer2 */
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      48
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      RS[ ]	/* ReadStore */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      49
+      FDEF[ ]	/* FunctionDefinition */
+      MDAP[0]	/* MoveDirectAbsPt */
+      SLOOP[ ]	/* SetLoopVariable */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      50
+      FDEF[ ]	/* FunctionDefinition */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      11
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      RS[ ]	/* ReadStore */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      RS[ ]	/* ReadStore */
+      MUL[ ]	/* Multiply */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      51
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      2 0
+      SZPS[ ]	/* SetZonePointerS */
+      CINDEX[ ]	/* CopyXToTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      MD[0]	/* MeasureDistance */
+      ROLL[ ]	/* RollTopThreeStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      IF[ ]	/* If */
+      DIV[ ]	/* Divide */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 3 values pushed */
+      50 1 1
+      SZP2[ ]	/* SetZonePointer2 */
+      SZP1[ ]	/* SetZonePointer1 */
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      52
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      9
+      RS[ ]	/* ReadStore */
+      CALL[ ]	/* CallFunction */
+      NEG[ ]	/* Negate */
+      ROLL[ ]	/* RollTopThreeStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      ROLL[ ]	/* RollTopThreeStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      53
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      9
+      RS[ ]	/* ReadStore */
+      CALL[ ]	/* CallFunction */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      96
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      LTEQ[ ]	/* LessThenOrEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 4 values pushed */
+      2 32 3 32
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 4 values pushed */
+      2 38 3 26
+      EIF[ ]	/* EndIf */
+      WS[ ]	/* WriteStore */
+      WS[ ]	/* WriteStore */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      RS[ ]	/* ReadStore */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SWAP[ ]	/* SwapTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      ABS[ ]	/* Absolute */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      RS[ ]	/* ReadStore */
+      SUB[ ]	/* Subtract */
+      ABS[ ]	/* Absolute */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      RS[ ]	/* ReadStore */
+      SUB[ ]	/* Subtract */
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      SUB[ ]	/* Subtract */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      MINDEX[ ]	/* MoveXToTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ELSE[ ]	/* Else */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      RS[ ]	/* ReadStore */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      RS[ ]	/* ReadStore */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      CINDEX[ ]	/* CopyXToTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      MINDEX[ ]	/* MoveXToTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      ADD[ ]	/* Add */
+      ABS[ ]	/* Absolute */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      CINDEX[ ]	/* CopyXToTopStack */
+      ADD[ ]	/* Add */
+      ABS[ ]	/* Absolute */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      ELSE[ ]	/* Else */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      MINDEX[ ]	/* MoveXToTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      MINDEX[ ]	/* MoveXToTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SWAP[ ]	/* SwapTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      55
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      MDAP[0]	/* MoveDirectAbsPt */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      6
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      5
+      CINDEX[ ]	/* CopyXToTopStack */
+      MD[0]	/* MeasureDistance */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 2 values pushed */
+      2048 2048
+      MUL[ ]	/* Multiply */
+      MUL[ ]	/* Multiply */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      IF[ ]	/* If */
+      DIV[ ]	/* Divide */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      MUL[ ]	/* Multiply */
+      PUSH[ ]	/* 1 value pushed */
+      1024
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      SWAP[ ]	/* SwapTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      ROLL[ ]	/* RollTopThreeStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      57
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      RS[ ]	/* ReadStore */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      ADD[ ]	/* Add */
+      PUSH[ ]	/* 1 value pushed */
+      32
+      ADD[ ]	/* Add */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      ROLL[ ]	/* RollTopThreeStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      58
+      FDEF[ ]	/* FunctionDefinition */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      EIF[ ]	/* EndIf */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      59
+      FDEF[ ]	/* FunctionDefinition */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      EIF[ ]	/* EndIf */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      60
+      FDEF[ ]	/* FunctionDefinition */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      EIF[ ]	/* EndIf */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      EIF[ ]	/* EndIf */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      61
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      52
+      CALL[ ]	/* CallFunction */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      EIF[ ]	/* EndIf */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      62
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      53
+      CALL[ ]	/* CallFunction */
+      ROLL[ ]	/* RollTopThreeStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      ROLL[ ]	/* RollTopThreeStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[0]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      EIF[ ]	/* EndIf */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      RS[ ]	/* ReadStore */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 1 value pushed */
+      42
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      63
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      MINDEX[ ]	/* MoveXToTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      9
+      RS[ ]	/* ReadStore */
+      CALL[ ]	/* CallFunction */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      SWAP[ ]	/* SwapTopStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      8 4
+      CINDEX[ ]	/* CopyXToTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      CINDEX[ ]	/* CopyXToTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      9
+      RS[ ]	/* ReadStore */
+      CALL[ ]	/* CallFunction */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      96
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      LTEQ[ ]	/* LessThenOrEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 4 values pushed */
+      2 32 3 32
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 4 values pushed */
+      2 38 3 26
+      EIF[ ]	/* EndIf */
+      WS[ ]	/* WriteStore */
+      WS[ ]	/* WriteStore */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      RS[ ]	/* ReadStore */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      ADD[ ]	/* Add */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      DUP[ ]	/* DuplicateTopStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      ROLL[ ]	/* RollTopThreeStack */
+      SUB[ ]	/* Subtract */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      ABS[ ]	/* Absolute */
+      SWAP[ ]	/* SwapTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      RS[ ]	/* ReadStore */
+      SUB[ ]	/* Subtract */
+      ABS[ ]	/* Absolute */
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      RS[ ]	/* ReadStore */
+      SUB[ ]	/* Subtract */
+      ELSE[ ]	/* Else */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      RS[ ]	/* ReadStore */
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      CINDEX[ ]	/* CopyXToTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      DIV[ ]	/* Divide */
+      DUP[ ]	/* DuplicateTopStack */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      LT[ ]	/* LessThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      ADD[ ]	/* Add */
+      EIF[ ]	/* EndIf */
+      FLOOR[ ]	/* Floor */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      MUL[ ]	/* Multiply */
+      SUB[ ]	/* Subtract */
+      PUSH[ ]	/* 1 value pushed */
+      2
+      CINDEX[ ]	/* CopyXToTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      SWAP[ ]	/* SwapTopStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      ELSE[ ]	/* Else */
+      POP[ ]	/* PopTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      SWAP[ ]	/* SwapTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      CALL[ ]	/* CallFunction */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      65
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      52
+      CALL[ ]	/* CallFunction */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      66
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      53
+      CALL[ ]	/* CallFunction */
+      POP[ ]	/* PopTopStack */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      ALIGNRP[ ]	/* AlignRelativePt */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      SWAP[ ]	/* SwapTopStack */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      RS[ ]	/* ReadStore */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 1 value pushed */
+      42
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      67
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZP2[ ]	/* SetZonePointer2 */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 1
+      SZP2[ ]	/* SetZonePointer2 */
+      SZP1[ ]	/* SetZonePointer1 */
+      SZP0[ ]	/* SetZonePointer0 */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 1 value pushed */
+      48
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      68
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZP2[ ]	/* SetZonePointer2 */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[1]	/* GetCoordOnPVector */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 1
+      SZP2[ ]	/* SetZonePointer2 */
+      SZP1[ ]	/* SetZonePointer1 */
+      SZP0[ ]	/* SetZonePointer0 */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 1 value pushed */
+      48
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      69
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 2 values pushed */
+      0 1
+      SZP1[ ]	/* SetZonePointer1 */
+      SZP0[ ]	/* SetZonePointer0 */
+      PUSH[ ]	/* 1 value pushed */
+      49
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      70
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      51
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      71
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      RCVT[ ]	/* ReadCVT */
+      SWAP[ ]	/* SwapTopStack */
+      DUP[ ]	/* DuplicateTopStack */
+      MDAP[0]	/* MoveDirectAbsPt */
+      DUP[ ]	/* DuplicateTopStack */
+      GC[0]	/* GetCoordOnPVector */
+      ROLL[ ]	/* RollTopThreeStack */
+      SWAP[ ]	/* SwapTopStack */
+      SUB[ ]	/* Subtract */
+      SHPIX[ ]	/* ShiftZoneByPixel */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      72
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      SWAP[ ]	/* SwapTopStack */
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 1 value pushed */
+      71
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      73
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 0 64
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      74
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 64
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      75
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 0 64
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      76
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 64
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      77
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 0 65
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      78
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 65
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      79
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 0 65
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      80
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 65
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      81
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 0 61
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      82
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 61
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      83
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 0 61
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      84
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 61
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      85
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 0 63
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      86
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 63
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      87
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 0 63
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      88
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 63
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      89
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 0 66
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      90
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 66
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      91
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 0 66
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      92
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 66
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      93
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 0 62
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      94
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      0 1 62
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      95
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 0 62
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      96
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 3 values pushed */
+      1 1 62
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      97
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      CALL[ ]	/* CallFunction */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      98
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      58
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      99
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      59
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      100
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      0
+      SZPS[ ]	/* SetZonePointerS */
+      PUSH[ ]	/* 1 value pushed */
+      54
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      60
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      101
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      55
+      CALL[ ]	/* CallFunction */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      102
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      55
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      58
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      103
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      55
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      59
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      104
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      55
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      60
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      105
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      CALL[ ]	/* CallFunction */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      106
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      58
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      107
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      59
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      108
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      56
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      60
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      109
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      57
+      CALL[ ]	/* CallFunction */
+      MDAP[0]	/* MoveDirectAbsPt */
+      PUSH[ ]	/* 2 values pushed */
+      42 1
+      SZP1[ ]	/* SetZonePointer1 */
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      110
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      57
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      58
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      111
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      57
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      59
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      112
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      57
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      60
+      CALL[ ]	/* CallFunction */
+      ENDF[ ]	/* EndFunctionDefinition */
+      PUSH[ ]	/* 1 value pushed */
+      113
+      FDEF[ ]	/* FunctionDefinition */
+      PUSH[ ]	/* 4 values pushed */
+      9 4 2 3
+      RCVT[ ]	/* ReadCVT */
+      IF[ ]	/* If */
+      POP[ ]	/* PopTopStack */
+      ELSE[ ]	/* Else */
+      SWAP[ ]	/* SwapTopStack */
+      POP[ ]	/* PopTopStack */
+      EIF[ ]	/* EndIf */
+      WS[ ]	/* WriteStore */
+      CALL[ ]	/* CallFunction */
+      PUSH[ ]	/* 1 value pushed */
+      8
+      NEG[ ]	/* Negate */
+      PUSH[ ]	/* 1 value pushed */
+      3
+      DEPTH[ ]	/* GetDepthStack */
+      LT[ ]	/* LessThan */
+      JROT[ ]	/* JumpRelativeOnTrue */
+      PUSH[ ]	/* 1 value pushed */
+      1
+      SZP2[ ]	/* SetZonePointer2 */
+      IUP[0]	/* InterpolateUntPts */
+      ENDF[ ]	/* EndFunctionDefinition */
+    </assembly>
+  </fpgm>
+
+  <prep>
+    <assembly>
+      SVTCA[0]	/* SetFPVectorToAxis */
+      MPPEM[ ]	/* MeasurePixelPerEm */
+      PUSH[ ]	/* 1 value pushed */
+      200
+      GT[ ]	/* GreaterThan */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      1 1
+      INSTCTRL[ ]	/* SetInstrExecControl */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 3 values pushed */
+      1 2048 2048
+      MUL[ ]	/* Multiply */
+      WCVTF[ ]	/* WriteCVTInFUnits */
+      PUSH[ ]	/* 2 values pushed */
+      0 5
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 6 values pushed */
+      72 52 0 30 4 0
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      0 5
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 10 values pushed */
+      59 8 39 8 36 255 19 7 4 8
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      0 5
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 10 values pushed */
+      69 6 49 6 37 254 28 5 4 8
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      0 9
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 6 values pushed */
+      3840 2560 2368 1280 4 9
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      0 13
+      WS[ ]	/* WriteStore */
+      PUSH[ ]	/* 6 values pushed */
+      64 64 0 64 4 9
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 10 values pushed */
+      61 8 41 8 37 0 21 7 4 11
+      LOOPCALL[ ]	/* LoopAndCallFunction */
+      PUSH[ ]	/* 2 values pushed */
+      3 0
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 2 values pushed */
+      36 1
+      GETINFO[ ]	/* GetInfo */
+      LTEQ[ ]	/* LessThenOrEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 1 value pushed */
+      64
+      GETINFO[ ]	/* GetInfo */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      3 100
+      WCVTP[ ]	/* WriteCVTInPixels */
+      PUSH[ ]	/* 2 values pushed */
+      38 1
+      GETINFO[ ]	/* GetInfo */
+      LTEQ[ ]	/* LessThenOrEqual */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 3 values pushed */
+      2176 1 1088
+      GETINFO[ ]	/* GetInfo */
+      MUL[ ]	/* Multiply */
+      EQ[ ]	/* Equal */
+      IF[ ]	/* If */
+      PUSH[ ]	/* 2 values pushed */
+      3 0
+      WCVTP[ ]	/* WriteCVTInPixels */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      EIF[ ]	/* EndIf */
+      PUSH[ ]	/* 1 value pushed */
+      511
+      SCANCTRL[ ]	/* ScanConversionControl */
+      PUSH[ ]	/* 1 value pushed */
+      4
+      SCANTYPE[ ]	/* ScanType */
+      PUSH[ ]	/* 2 values pushed */
+      2 0
+      WCVTP[ ]	/* WriteCVTInPixels */
+    </assembly>
+  </prep>
+
+  <cvt>
+    <cv index="0" value="0"/>
+    <cv index="1" value="0"/>
+    <cv index="2" value="0"/>
+    <cv index="3" value="0"/>
+    <cv index="4" value="0"/>
+    <cv index="5" value="0"/>
+    <cv index="6" value="0"/>
+    <cv index="7" value="0"/>
+    <cv index="8" value="0"/>
+    <cv index="9" value="0"/>
+    <cv index="10" value="0"/>
+    <cv index="11" value="0"/>
+    <cv index="12" value="0"/>
+    <cv index="13" value="0"/>
+    <cv index="14" value="0"/>
+    <cv index="15" value="0"/>
+    <cv index="16" value="0"/>
+    <cv index="17" value="98"/>
+    <cv index="18" value="98"/>
+    <cv index="19" value="75"/>
+    <cv index="20" value="75"/>
+    <cv index="21" value="1415"/>
+    <cv index="22" value="0"/>
+    <cv index="23" value="995"/>
+    <cv index="24" value="0"/>
+    <cv index="25" value="-352"/>
+    <cv index="26" value="1974"/>
+    <cv index="27" value="-426"/>
+    <cv index="28" value="1431"/>
+    <cv index="29" value="-15"/>
+    <cv index="30" value="1011"/>
+    <cv index="31" value="-13"/>
+    <cv index="32" value="-352"/>
+    <cv index="33" value="1974"/>
+    <cv index="34" value="-426"/>
+    <cv index="35" value="50"/>
+    <cv index="36" value="50"/>
+    <cv index="37" value="98"/>
+    <cv index="38" value="98"/>
+    <cv index="39" value="75"/>
+    <cv index="40" value="75"/>
+    <cv index="41" value="1415"/>
+    <cv index="42" value="0"/>
+    <cv index="43" value="1415"/>
+    <cv index="44" value="988"/>
+    <cv index="45" value="-12"/>
+    <cv index="46" value="-352"/>
+    <cv index="47" value="1974"/>
+    <cv index="48" value="-426"/>
+    <cv index="49" value="1431"/>
+    <cv index="50" value="-15"/>
+    <cv index="51" value="1429"/>
+    <cv index="52" value="1011"/>
+    <cv index="53" value="-12"/>
+    <cv index="54" value="-352"/>
+    <cv index="55" value="1974"/>
+    <cv index="56" value="-426"/>
+    <cv index="57" value="98"/>
+    <cv index="58" value="98"/>
+    <cv index="59" value="75"/>
+    <cv index="60" value="75"/>
+    <cv index="61" value="1415"/>
+    <cv index="62" value="0"/>
+    <cv index="63" value="1441"/>
+    <cv index="64" value="995"/>
+    <cv index="65" value="0"/>
+    <cv index="66" value="-352"/>
+    <cv index="67" value="1974"/>
+    <cv index="68" value="-426"/>
+    <cv index="69" value="1431"/>
+    <cv index="70" value="-16"/>
+    <cv index="71" value="1441"/>
+    <cv index="72" value="1011"/>
+    <cv index="73" value="-13"/>
+    <cv index="74" value="-369"/>
+    <cv index="75" value="1974"/>
+    <cv index="76" value="-426"/>
+  </cvt>
+
+  <loca>
+    <!-- The 'loca' table will be calculated by the compiler -->
+  </loca>
+
+  <glyf>
+
+    <!-- The xMin, yMin, xMax and yMax values
+         will be recalculated by the compiler. -->
+
+    <TTGlyph name=".notdef"/><!-- contains no outline data -->
+
+    <TTGlyph name="glyph00001" xMin="54" yMin="-16" xMax="990" yMax="1344">
+      <contour>
+        <pt x="990" y="964" on="1"/>
+        <pt x="990" y="0" on="1"/>
+        <pt x="894" y="0" on="1"/>
+        <pt x="894" y="893" on="1"/>
+        <pt x="318" y="893" on="1"/>
+        <pt x="318" y="218" on="1"/>
+        <pt x="318" y="177" on="0"/>
+        <pt x="339" y="118" on="0"/>
+        <pt x="376" y="80" on="0"/>
+        <pt x="426" y="62" on="0"/>
+        <pt x="455" y="62" on="1"/>
+        <pt x="491" y="62" on="0"/>
+        <pt x="543" y="83" on="0"/>
+        <pt x="581" y="108" on="0"/>
+        <pt x="605" y="129" on="0"/>
+        <pt x="612" y="129" on="1"/>
+        <pt x="620" y="129" on="0"/>
+        <pt x="628" y="119" on="1"/>
+        <pt x="654" y="77" on="1"/>
+        <pt x="616" y="35" on="0"/>
+        <pt x="499" y="-16" on="0"/>
+        <pt x="436" y="-16" on="1"/>
+        <pt x="335" y="-16" on="0"/>
+        <pt x="222" y="96" on="0"/>
+        <pt x="222" y="213" on="1"/>
+        <pt x="222" y="893" on="1"/>
+        <pt x="79" y="893" on="1"/>
+        <pt x="68" y="893" on="0"/>
+        <pt x="54" y="905" on="0"/>
+        <pt x="54" y="916" on="1"/>
+        <pt x="54" y="953" on="1"/>
+        <pt x="224" y="965" on="1"/>
+        <pt x="248" y="1321" on="1"/>
+        <pt x="250" y="1330" on="0"/>
+        <pt x="262" y="1344" on="0"/>
+        <pt x="273" y="1344" on="1"/>
+        <pt x="318" y="1344" on="1"/>
+        <pt x="318" y="964" on="1"/>
+      </contour>
+      <instructions><assembly>
+          PUSH[ ]	/* 4 values pushed */
+          34 20 1 44
+          CALL[ ]	/* CallFunction */
+        </assembly></instructions>
+    </TTGlyph>
+
+    <TTGlyph name="glyph00002" xMin="311" yMin="1263" xMax="489" yMax="1439">
+      <contour>
+        <pt x="489" y="1350" on="1"/>
+        <pt x="489" y="1332" on="0"/>
+        <pt x="474" y="1301" on="0"/>
+        <pt x="449" y="1277" on="0"/>
+        <pt x="417" y="1263" on="0"/>
+        <pt x="399" y="1263" on="1"/>
+        <pt x="381" y="1263" on="0"/>
+        <pt x="349" y="1277" on="0"/>
+        <pt x="325" y="1301" on="0"/>
+        <pt x="311" y="1332" on="0"/>
+        <pt x="311" y="1350" on="1"/>
+        <pt x="311" y="1368" on="0"/>
+        <pt x="325" y="1401" on="0"/>
+        <pt x="349" y="1425" on="0"/>
+        <pt x="381" y="1439" on="0"/>
+        <pt x="399" y="1439" on="1"/>
+        <pt x="417" y="1439" on="0"/>
+        <pt x="449" y="1425" on="0"/>
+        <pt x="474" y="1401" on="0"/>
+        <pt x="489" y="1368" on="0"/>
+      </contour>
+      <instructions><assembly>
+          PUSH[ ]	/* 4 values pushed */
+          14 4 1 44
+          CALL[ ]	/* CallFunction */
+        </assembly></instructions>
+    </TTGlyph>
+
+    <TTGlyph name="glyph00003" xMin="54" yMin="-16" xMax="1034" yMax="1439">
+      <component glyphName="glyph00004" x="54" y="0" flags="0x0"/>
+      <component glyphName="glyph00001" x="0" y="0" flags="0x0"/>
+      <component glyphName="glyph00002" x="545" y="0" flags="0x0"/>
+      <instructions><assembly>
+          PUSH[ ]	/* 6 values pushed */
+          53 43 35 21 2 45
+          CALL[ ]	/* CallFunction */
+        </assembly></instructions>
+    </TTGlyph>
+
+    <TTGlyph name="glyph00004" xMin="0" yMin="0" xMax="0" yMax="0">
+      <contour>
+        <pt x="0" y="0" on="1"/>
+      </contour>
+      <instructions><assembly>
+          PUSH[ ]	/* 3 values pushed */
+          2 100 2
+          RCVT[ ]	/* ReadCVT */
+          ADD[ ]	/* Add */
+          WCVTP[ ]	/* WriteCVTInPixels */
+        </assembly></instructions>
+    </TTGlyph>
+
+  </glyf>
+
+  <name>
+    <namerecord nameID="0" platformID="3" platEncID="1" langID="0x409">
+      Copyright (c) 2010-2014 by tyPoland Lukasz Dziedzic with Reserved Font Name "Lato". Licensed under the SIL Open Font License, Version 1.1. 
+    </namerecord>
+    <namerecord nameID="1" platformID="3" platEncID="1" langID="0x409">
+      Lato Light
+    </namerecord>
+    <namerecord nameID="2" platformID="3" platEncID="1" langID="0x409">
+      Regular
+    </namerecord>
+    <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
+      2.007;tyPL;Lato-Light;1944;TR4-4.0.1.5099
+    </namerecord>
+    <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
+      Lato Light
+    </namerecord>
+    <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
+      Version 2.007; 2014-02-27
+    </namerecord>
+    <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
+      Lato-Light
+    </namerecord>
+    <namerecord nameID="7" platformID="3" platEncID="1" langID="0x409">
+      Lato is a trademark of tyPoland Lukasz Dziedzic.
+    </namerecord>
+    <namerecord nameID="8" platformID="3" platEncID="1" langID="0x409">
+      tyPoland Lukasz Dziedzic
+    </namerecord>
+    <namerecord nameID="9" platformID="3" platEncID="1" langID="0x409">
+      Lukasz Dziedzic
+    </namerecord>
+    <namerecord nameID="10" platformID="3" platEncID="1" langID="0x409">
+      Lato is a sanserif typeface family designed in the Summer 2010 and extended in the Summer 2013 by Warsaw-based designer Lukasz Dziedzic ("Lato" means "Summer" in Polish). It tries to carefully balance some potentially conflicting priorities: it should seem quite "transparent" when used in body text but would display some original traits when used in larger sizes. The classical proportions, particularly visible in the uppercase, give the letterforms familiar harmony and elegance. At the same time, its sleek sanserif look makes evident the fact that Lato was designed in 2010, even though it does not follow any current trend. The semi-rounded details of the letters give Lato a feeling of warmth, while the strong structure provides stability and seriousness. In 2013-2014, the family was greatly extended to cover 2300+ glyphs per style. It now supports 100+ Latin-based languages, 50+ Cyrillic-based languages as well as Greek and IPA phonetics. 
+    </namerecord>
+    <namerecord nameID="11" platformID="3" platEncID="1" langID="0x409">
+      http://www.typoland.com/
+    </namerecord>
+    <namerecord nameID="12" platformID="3" platEncID="1" langID="0x409">
+      http://www.typoland.com/designers/Lukasz_Dziedzic/
+    </namerecord>
+    <namerecord nameID="13" platformID="3" platEncID="1" langID="0x409">
+      Copyright (c) 2011-2014 by tyPoland Lukasz Dziedzic (http://www.typoland.com/) with Reserved Font Name "Lato". Licensed under the SIL Open Font License, Version 1.1 (http://scripts.sil.org/OFL). 
+    </namerecord>
+    <namerecord nameID="14" platformID="3" platEncID="1" langID="0x409">
+      http://scripts.sil.org/OFL
+    </namerecord>
+    <namerecord nameID="16" platformID="3" platEncID="1" langID="0x409">
+      Lato
+    </namerecord>
+    <namerecord nameID="17" platformID="3" platEncID="1" langID="0x409">
+      Light
+    </namerecord>
+  </name>
+
+  <post>
+    <formatType value="3.0"/>
+    <italicAngle value="0.0"/>
+    <underlinePosition value="-103"/>
+    <underlineThickness value="194"/>
+    <isFixedPitch value="0"/>
+    <minMemType42 value="0"/>
+    <maxMemType42 value="0"/>
+    <minMemType1 value="0"/>
+    <maxMemType1 value="0"/>
+  </post>
+
+  <gasp>
+    <gaspRange rangeMaxPPEM="65535" rangeGaspBehavior="15"/>
+  </gasp>
+
+  <GPOS>
+    <Version value="1.0"/>
+    <ScriptList>
+      <!-- ScriptCount=4 -->
+      <ScriptRecord index="0">
+        <ScriptTag value="DFLT"/>
+        <Script>
+          <DefaultLangSys>
+            <ReqFeatureIndex value="65535"/>
+            <!-- FeatureCount=1 -->
+            <FeatureIndex index="0" value="0"/>
+          </DefaultLangSys>
+          <!-- LangSysCount=0 -->
+        </Script>
+      </ScriptRecord>
+      <ScriptRecord index="1">
+        <ScriptTag value="cyrl"/>
+        <Script>
+          <DefaultLangSys>
+            <ReqFeatureIndex value="65535"/>
+            <!-- FeatureCount=1 -->
+            <FeatureIndex index="0" value="1"/>
+          </DefaultLangSys>
+          <!-- LangSysCount=0 -->
+        </Script>
+      </ScriptRecord>
+      <ScriptRecord index="2">
+        <ScriptTag value="grek"/>
+        <Script>
+          <DefaultLangSys>
+            <ReqFeatureIndex value="65535"/>
+            <!-- FeatureCount=1 -->
+            <FeatureIndex index="0" value="2"/>
+          </DefaultLangSys>
+          <!-- LangSysCount=0 -->
+        </Script>
+      </ScriptRecord>
+      <ScriptRecord index="3">
+        <ScriptTag value="latn"/>
+        <Script>
+          <DefaultLangSys>
+            <ReqFeatureIndex value="65535"/>
+            <!-- FeatureCount=1 -->
+            <FeatureIndex index="0" value="3"/>
+          </DefaultLangSys>
+          <!-- LangSysCount=0 -->
+        </Script>
+      </ScriptRecord>
+    </ScriptList>
+    <FeatureList>
+      <!-- FeatureCount=4 -->
+      <FeatureRecord index="0">
+        <FeatureTag value="kern"/>
+        <Feature>
+          <!-- LookupCount=1 -->
+          <LookupListIndex index="0" value="0"/>
+        </Feature>
+      </FeatureRecord>
+      <FeatureRecord index="1">
+        <FeatureTag value="kern"/>
+        <Feature>
+          <!-- LookupCount=1 -->
+          <LookupListIndex index="0" value="0"/>
+        </Feature>
+      </FeatureRecord>
+      <FeatureRecord index="2">
+        <FeatureTag value="kern"/>
+        <Feature>
+          <!-- LookupCount=1 -->
+          <LookupListIndex index="0" value="0"/>
+        </Feature>
+      </FeatureRecord>
+      <FeatureRecord index="3">
+        <FeatureTag value="kern"/>
+        <Feature>
+          <!-- LookupCount=1 -->
+          <LookupListIndex index="0" value="0"/>
+        </Feature>
+      </FeatureRecord>
+    </FeatureList>
+    <LookupList>
+      <!-- LookupCount=1 -->
+      <Lookup index="0">
+        <!-- LookupType=2 -->
+        <LookupFlag value="0"/>
+        <!-- SubTableCount=1 -->
+        <PairPos index="0" Format="2">
+          <Coverage>
+            <Glyph value="glyph00003"/>
+          </Coverage>
+          <ValueFormat1 value="4"/>
+          <ValueFormat2 value="0"/>
+          <ClassDef1>
+            <ClassDef glyph="glyph00003" class="1"/>
+          </ClassDef1>
+          <ClassDef2>
+            <ClassDef glyph="glyph00003" class="1"/>
+          </ClassDef2>
+          <!-- Class1Count=2 -->
+          <!-- Class2Count=2 -->
+          <Class1Record index="0">
+            <Class2Record index="0">
+              <Value1 XAdvance="0"/>
+            </Class2Record>
+            <Class2Record index="1">
+              <Value1 XAdvance="-11"/>
+            </Class2Record>
+          </Class1Record>
+          <Class1Record index="1">
+            <Class2Record index="0">
+              <Value1 XAdvance="0"/>
+            </Class2Record>
+            <Class2Record index="1">
+              <Value1 XAdvance="0"/>
+            </Class2Record>
+          </Class1Record>
+        </PairPos>
+      </Lookup>
+    </LookupList>
+  </GPOS>
+
+  <GSUB>
+    <Version value="1.0"/>
+    <ScriptList>
+      <!-- ScriptCount=0 -->
+    </ScriptList>
+    <FeatureList>
+      <!-- FeatureCount=0 -->
+    </FeatureList>
+    <LookupList>
+      <!-- LookupCount=0 -->
+    </LookupList>
+  </GSUB>
+
+</ttFont>

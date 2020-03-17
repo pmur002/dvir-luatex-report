@@ -1,0 +1,1736 @@
+<html>
+  <head>
+<style type="text/css">
+.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    @media print {
+      body { }
+      p.img { text-align: center; page-break-inside: avoid }
+      img.CC { display: inline }
+    }
+    @media screen {
+      body { max-width: 800px; margin: auto }
+      p.img { text-align: center }
+      img.CC { display: inline }
+    }
+    p.date {
+      font-size: smaller;
+      margin: 0;
+    }
+    p.versionHistory {
+      color: gray
+    }
+    p.versionHistory a {
+      color: gray
+    }
+    p.ref {
+      text-indent: -2em;
+      padding-left: 2em;
+    }
+  </style>
+    <!-- PDFjs code (more at the end of the document) -->
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  </head>
+  <body>
+    <h1>The Agony and the Ecstacy: Adding LuaTeX support to 'dvir'</h1>
+    <p>
+      <span style="font-style: italic">by Paul Murrell</span>
+      <a href="http://orcid.org">
+        <img alt="" src="https://www.stat.auckland.ac.nz/~paul/ORCID/ORCiD.png" style="width: 16px; height: 16px; vertical-align: middle">
+      </a>
+      <span style="font-family: mono; font-size: small">
+        <a href="http://orcid.org/0000-0002-3224-8858">http://orcid.org/0000-0002-3224-8858</a>
+      </span>
+    </p>
+    <p class="date">
+    Version 1:
+Tuesday 17 March 2020
+  </p>
+
+
+    <hr>
+    <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img class="CC" alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">This document</span>
+    by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Paul
+    Murrell</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+    Commons Attribution 4.0 International License</a>.
+  </p>
+    <hr>
+    <p>
+    This report describes an update to the 
+    R package 'dvir' to add support for the LuaTeX engine.
+    The immediate advantage of this support is the ability to
+    use a wider variety of fonts and font features in typeset
+    text within R graphics.
+  </p>
+    <div>
+      <h2>Table of Contents:</h2>
+      <ul style="list-style: none">
+        <li>
+          <a href="#intro">1. The 'dvir' package</a>
+        </li>
+        <li>
+          <a href="#luatex">Hagen et al., 2020</a>
+        </li>
+        <li>
+          <a href="#dvir-luatex">3. Adding LuaTeX support to 'dvir'</a>
+        </li>
+        <li>
+          <a href="#details">4. Technical details</a>
+        </li>
+        <li>
+          <a href="#examples">5. Examples</a>
+        </li>
+        <li>
+          <a href="#discussion">6. Discussion</a>
+        </li>
+        <li>
+          <a href="#requirements">7. Technical requirements</a>
+        </li>
+        <li>
+          <a href="#Resources">8. Resources</a>
+        </li>
+        <li>
+          <a href="#references">9. References</a>
+        </li>
+      </ul>
+    </div>
+
+    <h2>
+      <a name="intro">1. The 'dvir' package</a>
+    </h2>
+    <p>
+    The idea behind the 'dvir' package (<a href="#pkg:dvir">Murrell, 2020</a>,
+    <a href="#murrell-dvir">Murrell, 2018</a>) 
+    is to be able to 
+    typeset text using Donald Knuth's TeX system (<a href="#Knuth:1986:TEX:1102013">Knuth, 1986</a>), 
+    but render the result in R.
+    The aim is to render the result using R graphics
+    and to obtain identical rendered output compared to the
+    output 
+    produced by a "normal" TeX renderer like <code>pdflatex</code>.
+  </p>
+    <p>
+    For example, the following code typesets a simple equation
+    using TeX and renders it in R.  The image below the code
+    is text drawn in R using the locations and fonts dictated by TeX.
+  </p>
+<div class="chunk" id="demo-code"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(dvir)</span>
+<span class="hl kwd">grid.latex</span><span class="hl std">(</span><span class="hl str">&quot;$x - \\mu$&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figure/demo-code-1.png" title="plot of chunk demo-code" alt="plot of chunk demo-code" class="plot" /></div></div>
+    <p>
+    The approach used by the 'dvir' package involves generating DVI
+    output from TeX code.  This DVI output provides 
+    precise information about every individual character of text,
+    including where to draw each character and which font to use.  The 'dvir' 
+    package reads the DVI information and converts it to 
+    'grid' grobs (graphical objects) for rendering in R.
+  </p>
+    <p>
+    One of the major limitations of 'dvir' version 0.1-0 was that it was focused
+    just on the TeX Computer Modern fonts.  This produces nice mathematical
+    equations, but for normal text can be quite limiting.
+  </p>
+    <h2>
+      <a name="luatex">2. The LuaTeX engine</a>
+    </h2>
+    <p>
+    The LuaTeX engine (<a href="#luatex">Hagen et al., 2020</a>)
+    differs from the original TeX engine in several
+    important ways:<a href="#terminology"><sup>1</sup></a>  
+    it works with Unicode text (so it is easy to 
+    specify a very wide range of characters);  it provides support for 
+    modern font technologies like TrueType and OpenType;  and it
+    has an embedded scripting language (called Lua).
+  </p>
+    <p>
+    The first two of those features mean that, if we can add 
+    support for the LuaTeX engine to 'dvir', we will be able to produce
+    a much wider range of typeset text in R graphics.
+  </p>
+    <h2>
+      <a name="dvir-luatex">3. Adding LuaTeX support to 'dvir'</a>
+    </h2>
+    <p>
+    From a user perspective, there is not much to tell.
+    This is the "ecstacy";
+    when everything works as planned, 
+    we get R graphics output that contains Tex-quality typesetting.
+  </p>
+    <p>
+    As a simple example, 
+    the following LuaTeX document,
+    <code>luatex-demo.tex</code>,
+    contains simple text that 
+    makes use of a Lato Light (non-Computer-Modern) font,
+    within a paragraph that is 3 inches wide.
+  </p>
+<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass[12pt]{standalone}
+  \usepackage{fontspec} 
+  \setmainfont[Mapping=text-tex]{Lato Light} 
+  \begin{document}
+  \selectfont
+  \begin{minipage}{3in}
+  Some text in Lato Light font.
+  This sentence just forces some typesetting 
+  (a line break).
+  \end{minipage}
+  \end{document}
+</pre></div>
+</div></div>
+    <p>
+    The following R code renders the result of typesetting that
+    document using LuaTeX.
+  </p>
+<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(dvir)</span>
+<span class="hl kwd">grid.latex</span><span class="hl std">(</span><span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-demo.tex&quot;</span><span class="hl std">),</span>
+           <span class="hl kwc">engine</span><span class="hl std">=luatexEngine,</span>
+           <span class="hl kwc">preamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">postamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+    <p>
+    The new features of this code, compared to the previous version
+    of 'dvir', are the new arguments to <code>grid.latex</code>:
+    <code>engine</code>, to specify that we want to use the
+    LuaTeX engine, rather than the standard LaTeX engine; 
+    <code>preamble</code> and <code>postamble</code>, which allow
+    us to use a complete LuaTeX document as input, rather than
+    automatically wrapping the input with LaTeX begin/end document 
+    code.
+  </p>
+    <p>
+    The next section goes into the technical detail
+    of getting LuaTeX support in 'dvir'.  
+    It is safe to skip ahead to the 
+    <a href="#examples">Examples</a> Section, which contains more elaborate demonstrations
+    of LuaTeX output within R graphics.
+  </p>
+    <h2>
+      <a name="details">4. Technical details</a>
+    </h2>
+    <p>
+    This section describes the technical details of adding LuaTeX support.
+    This is the "agony".
+  </p>
+    <p>
+    This detailed description 
+    serves two purposes:  when things do not work as planned, these
+    details may provide some suggestions for what went wrong (and perhaps
+    even how to fix it);  and this is an important record of the internal
+    design, which is complicated, and will certainly be forgotten if 
+    not recorded properly.
+  </p>
+    <h3>DVI output from LuaTeX</h3>
+    <p>
+    The normal way to use LuaTeX is to run 
+    the <code>lualatex</code> program on a LuaTeX document, which produces 
+    a typeset PDF document.  However, the 'dvir' package consumes DVI
+    files, which we can get from LuaTeX by running
+    the <code>dvilualatex</code> program instead.
+  </p>
+    <p>
+    The following bash code generates a DVI file,
+    <code>luatex-demo.dvi</code>,
+    from the simple LuaTeX document, <code>luatex-demo.tex</code>,
+    which was shown above.    
+  </p>
+<div class="chunk" id="unnamed-chunk-6"><div class="rcode"><div class="source"><pre class="knitr bash">dvilualatex luatex-demo.tex
+</pre></div>
+</div></div>
+    <p>
+    The DVI file mostly consists of the usual instructions that adjust
+    the drawing location,
+    like <code>right3</code> and <code>down3</code>,
+    and the usual instructions to draw a character, like
+    <code>set_char_83</code> (an 'S' character).
+    However,
+    One major difference between this DVI output from <code>dvilualatex</code>
+    and the DVI output
+    from <code>latex</code> is the <code>fnt_def</code> instruction,
+    which defines a font to use for drawing text, and
+    in particular its <code>fontname</code> parameter.
+  </p>
+<div class="chunk" id="readdvi"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">readDVI</span><span class="hl std">(</span><span class="hl str">&quot;luatex-demo.dvi&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-7"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
+               comment= LuaTeX output 2020.03.17:2138
+  bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
+  push
+  push
+  push
+  push
+  push
+  push
+  push
+  right3       b=-4736287
+  down3        a=-4164158
+  fnt_def_1    fontnum=22, checksum=0, scale=786432, design=655360,
+               fontname=&quot;LatoLight:mode=node;script=latn;language=DFLT;+tlig;&quot;
+  fnt_num_22
+</pre></div>
+</div></div>
+    <p>
+    With the TeX engine, and standard Computer Modern fonts, the
+    <code>fontname</code> is just the name of a font, like <code>cmr12</code>
+    (meaning Computer Modern Roman at 12 pt size).
+    The <code>fontname</code> in the DVI above contains a font name,
+    plus additional information about how the font is being used.
+  </p>
+    <p>
+    So the first complication for 'dvir' with LuaTeX support
+    is that we must pull out the information that
+    we need from the <code>fontname</code> parameter in
+    <code>fnt_def</code> instructions.  For now, we will just
+    grab the font name
+    at the start, in this case, <code>LatoLight</code>.  We will come
+    back to some of the other information later.
+  </p>
+    <!-- 
+       mode=node means that we are dealing with a "more complex font"
+       otherwise mode=base (invisibly?)
+       See http://www.pragma-ade.com/general/manuals/luatex.pdf page 79
+  -->
+    <h3>Resolving LuaTeX font names</h3>
+    <p>
+    Having a font name is actually sufficient to draw some text on
+    some graphics devices in R.  For example, the Cairo graphics
+    devices can make use of just the font name, as shown below.
+  </p>
+<div class="chunk" id="unnamed-chunk-8"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(grid)</span>
+<span class="hl kwd">png</span><span class="hl std">(</span><span class="hl str">&quot;LatoLight.png&quot;</span><span class="hl std">,</span> <span class="hl kwc">type</span><span class="hl std">=</span><span class="hl str">&quot;cairo&quot;</span><span class="hl std">,</span> <span class="hl kwc">width</span><span class="hl std">=</span><span class="hl num">300</span><span class="hl std">,</span> <span class="hl kwc">height</span><span class="hl std">=</span><span class="hl num">50</span><span class="hl std">)</span>
+<span class="hl kwd">grid.text</span><span class="hl std">(</span><span class="hl str">&quot;Some text in Lato Light font.&quot;</span><span class="hl std">,</span>
+          <span class="hl kwc">gp</span><span class="hl std">=</span><span class="hl kwd">gpar</span><span class="hl std">(</span><span class="hl kwc">fontfamily</span><span class="hl std">=</span><span class="hl str">&quot;LatoLight&quot;</span><span class="hl std">))</span>
+<span class="hl kwd">dev.off</span><span class="hl std">()</span>
+</pre></div>
+</div></div>
+    <p>
+      <img src="LatoLight.png" alt="Text drawn in R using Lato Light font">
+    </p>
+    <p>
+    However, this does not work for all LuaTeX text 
+    or for all R graphics devices;
+    as we will see, what we really need is the actual font file that corresponds
+    to the font that LuaTeX used.
+    Fortunately, LuaTeX includes a tool called <code>luaotfload-tool</code>
+    that can help us.
+  </p>
+<div class="chunk" id="unnamed-chunk-9"><div class="rcode"><div class="source"><pre class="knitr bash">luaotfload-tool --find=LatoLight
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  luaotfload | resolve : Font &quot;LatoLight&quot; found!
+  luaotfload | resolve : Resolved file name &quot;/usr/share/fonts/truetype/lato/Lato-Light.ttf&quot;
+</pre></div>
+</div></div>
+    <p>
+    This font file will allow us to find out much more about the font
+    than just its name and that will help us to use the
+    font on other graphics devices and for more complex text.
+  </p>
+    <h3>Determining which character to draw</h3>
+    <p>
+    The simple LuaTeX example above only makes use of ASCII characters.
+    This means that all of the DVI instructions to draw a character in
+    that example are of
+    the form <code>set_char_<i>n</i></code>. The <code><i>n</i></code>
+    gives the <a href="https://theasciicode.com.ar/">ASCII encoding</a>
+    for the character: e.g., 
+    <code>set_char_83</code> means a capital 'S' character.
+  </p>
+    <p>
+    However, LuaTeX documents support Unicode text, so we can have,
+    for example, text with accents or diacritics, like the
+    c-cedilla, ç, in the document below.
+  </p>
+<div class="chunk" id="unnamed-chunk-10"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+  \usepackage{fontspec} 
+  \setmainfont[Mapping=text-tex]{Lato Light} 
+  \begin{document}
+  \selectfont
+  Du texte français en police Lato Light.
+  \end{document}
+</pre></div>
+</div></div>
+    <p>
+    We can generate a DVI file with <code>dvilualatex</code> as before ...
+  </p>
+<div class="chunk" id="unnamed-chunk-11"><div class="rcode"><div class="source"><pre class="knitr bash">dvilualatex luatex-demo-unicode.tex
+</pre></div>
+</div></div>
+    <p>
+    ... and the start of this DVI file is very much like the previous one
+    (just with the 'D' from "Du" instead of the 'S' from "Some").
+  </p>
+<div class="chunk" id="readdvi-unicode"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">readDVI</span><span class="hl std">(</span><span class="hl str">&quot;luatex-demo-unicode.dvi&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-12"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
+               comment= LuaTeX output 2020.03.17:2138
+  bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
+  push
+  push
+  push
+  push
+  push
+  right3       b=-4736287
+  down3        a=-4259513
+  fnt_def_1    fontnum=21, checksum=0, scale=655360, design=655360,
+               fontname=&quot;LatoLight:mode=node;script=latn;language=DFLT;+tlig;&quot;
+  fnt_num_21
+  set_char_68  'D'
+  right2       b=-6225
+</pre></div>
+</div></div>
+    <p>
+    However, if we look at the DVI information for the
+    text around the word "français", we see a <code>set_char1</code>
+    instruction (a single byte character outside the range 0-127),
+    with a parameter <code>e7</code>.  
+  </p>
+<div class="chunk" id="unnamed-chunk-13"><div class="rcode"><div class="output"><pre class="knitr r">  right2       b=-6553
+  set_char_97  'a'
+  set_char_110 'n'
+  set_char1    e7
+  set_char_97  'a'
+  set_char_105 'i'
+  set_char_115 's'
+</pre></div>
+</div></div>
+    <p>
+    This shows how LuaTeX expresses Unicode text (within the range 128-255).
+    The value <code>e7</code> is a UTF16BE encoding for the Unicode character
+    "LATIN SMALL LETTER C WITH CEDILLA" (the full encoding is <code>00e7</code>,
+    but the <code>00</code> is dropped to allow the DVI to just record
+    a single byte).
+  </p>
+    <p>
+    The next example demonstrates a full 2-byte UTF16BE encoding.
+    This time we have a LuaTeX document that contains the character
+    sequence "fi" (in the word "fine").
+  </p>
+<div class="chunk" id="unnamed-chunk-14"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+  \usepackage{fontspec} 
+  \setmainfont[Mapping=text-tex]{Lato Light} 
+  \begin{document}
+  \selectfont
+  Some fine text in Lato Light font.
+  \end{document}
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-15"><div class="rcode"><div class="source"><pre class="knitr bash">dvilualatex luatex-demo-flig.tex
+</pre></div>
+</div></div>
+    <p>
+    If we look at the DVI information around the word "fine",
+    we see two interesting points:  the "fi" has been reduced down to
+    a single character;  and that character is expressed as a 
+    <code>set_char2</code> instruction (a 2-byte character), 
+    with parameter <code>fb 01</code>.
+  </p>
+<div class="chunk" id="readdvi-flig"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">readDVI</span><span class="hl std">(</span><span class="hl str">&quot;luatex-demo-flig.dvi&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-16"><div class="rcode"><div class="output"><pre class="knitr r">  set_char_109 'm'
+  set_char_101 'e'
+  right3       b=177930
+  set_char2    fb 01
+  set_char_110 'n'
+  set_char_101 'e'
+  right3       b=177930
+</pre></div>
+</div></div>
+    <p>
+    What has happened is that LuaTeX has replaced 
+    the two characters 'f' followed by 'i' with a single <strong>ligature</strong>
+    character that combines the 'f' and the 'i' (to deal with the fact that
+    the top of the 'f' and the dot on the 'i' may interfere with each
+    other). The value <code>fb 01</code> 
+    is the UTF16BE encoding for the Unicode character 'LATIN SMALL 
+    LIGATURE FI'.
+  </p>
+    <p>
+    So another part of supporting LuaTeX in 'dvir' is being able to
+    convert these UTF16BE encodings into something that R understands.
+    The 'dvir' package uses the <code>iconv</code> function to 
+    perform this conversion.
+  </p>
+<div class="chunk" id="unnamed-chunk-17"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">iconv</span><span class="hl std">(</span><span class="hl kwd">list</span><span class="hl std">(</span><span class="hl kwd">as.raw</span><span class="hl std">(</span><span class="hl kwd">as.hexmode</span><span class="hl std">(</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;00&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;e7&quot;</span><span class="hl std">)))),</span> <span class="hl kwc">from</span><span class="hl std">=</span><span class="hl str">&quot;UTF16BE&quot;</span><span class="hl std">,</span> <span class="hl kwc">to</span><span class="hl std">=</span><span class="hl str">&quot;UTF-8&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  [1] &quot;ç&quot;
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwd">iconv</span><span class="hl std">(</span><span class="hl kwd">list</span><span class="hl std">(</span><span class="hl kwd">as.raw</span><span class="hl std">(</span><span class="hl kwd">as.hexmode</span><span class="hl std">(</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;fb&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;01&quot;</span><span class="hl std">)))),</span> <span class="hl kwc">from</span><span class="hl std">=</span><span class="hl str">&quot;UTF16BE&quot;</span><span class="hl std">,</span> <span class="hl kwc">to</span><span class="hl std">=</span><span class="hl str">&quot;UTF-8&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  [1] &quot;ﬁ&quot;
+</pre></div>
+</div></div>
+    <p>
+    These UTF-8 character values are 
+    sufficient for drawing on Cairo-based R graphics devices
+    at least, because the Cairo graphics device handles UTF-8 text.  
+    We will hopefully come back to the issue of 
+    other graphics devices later.
+  </p>
+    <p>
+    The next example increases the complexity significantly.
+    In this LuaTeX document, we have the character sequence "ti"
+    (in the word "timely").
+  </p>
+<div class="chunk" id="unnamed-chunk-18"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+  \usepackage{fontspec} 
+  \setmainfont[Mapping=text-tex]{Lato Light} 
+  \begin{document}
+  \selectfont
+  Some timely text in Lato Light font.
+  \end{document}
+</pre></div>
+</div></div>
+    <p>
+    If we look at the DVI information around the word "timely",
+    we again see that the "ti" has been reduced down to
+    a single character (a ligature) and this time we have a 
+    <code>set_char3</code> instruction (a 3-byte character), 
+    with parameter <code>0f 02 d5</code>.
+  </p>
+<div class="chunk" id="unnamed-chunk-19"><div class="rcode"><div class="source"><pre class="knitr bash">dvilualatex luatex-demo-tlig.tex
+</pre></div>
+</div></div>
+<div class="chunk" id="readdvi-tlig"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">readDVI</span><span class="hl std">(</span><span class="hl str">&quot;luatex-demo-tlig.dvi&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-20"><div class="rcode"><div class="output"><pre class="knitr r">  set_char_109 'm'
+  set_char_101 'e'
+  right3       b=177930
+  set_char3    0f 02 d5
+  set_char_109 'm'
+  set_char_101 'e'
+  set_char_108 'l'
+</pre></div>
+</div></div>
+    <p>
+    Similar to the "fi" example, the "ti" character sequence
+    has been reduced to a single ligature.  However, this example
+    is more complicated because the "ti" ligature does not exist 
+    in Unicode.  The bytes <code>0f 02 d5</code> do not represent
+    an encoding for a Unicode character.
+  </p>
+    <p>
+    This lack of Unicode representation 
+    presents two problems:  how do we map the <code>0f 02 d5</code>
+    value to an R character value?  and how do we express that character 
+    to an R graphics device?
+  </p>
+    <h3>Non-unicode characters in LuaTeX DVI output</h3>
+    <p>
+    The fact that LuaTeX has generated DVI information with
+    3 bytes (with <code>0f</code> as the
+    first byte) is an indication that the character we need to draw
+    is not a Unicode character.
+  </p>
+    <p>
+    The remaining two bytes, in this case <code>02 d5</code>, are an 
+    integer index, in this case 725, that means we should use the 725th
+    non-Unicode character in the current font.  To be more accurate, it means
+    that we should use the 725th
+    non-Unicode <strong>glyph</strong> in the current font.
+  </p>
+    <p>
+    If the expression "the 725th
+    non-Unicode glyph in the current font" seems confusing to you,
+    you are not alone.  We need to unpack it a little to understand 
+    what is going on.
+  </p>
+    <p>
+    First of all, a character is a concept, while a glyph is a concrete
+    symbol representing that concept.  The character 'A' is represented
+    by different glyphs in different fonts; the 
+    '<span style="font-family: Times New Roman, serif">A</span>' in a serif font like
+    Times New Roman looks different
+    to the 
+    '<span style="font-family: Courier, monospace">A</span>' in a monospace font
+    like Courier.
+  </p>
+    <p>
+    A font is a collection of glyphs, most of which are shapes representing
+    characters.  A font also contains (or refers to) an <strong>encoding</strong>,
+    which maps each glyph to a numeric value.  For example, the Lato Light
+    font contains a glyph representing the character 'S' and an 
+    encoding that maps 'S' glyph to the number 83.  It also
+    contains a glyph representing the "fi" ligature and an encoding
+    that maps the "fi" ligature glyph to the number 64257 (<code>fb 01</code>
+    in hexadecimal form).
+  </p>
+    <p>
+    Normally, when we draw text, we specify the characters to draw,
+    the font to use, and (often implicitly) an encoding.  The 
+    encoding maps the characters to the correct glyph within the font.
+  </p>
+    <p>
+    If we ignore the encoding, a font consists of just a collection of
+    glyphs, from 1 to the number of glyphs in the font.  We do not
+    usually access fonts this way, but the TTX tool (part of
+    the fonttools project; <a href="#fonttools">van Rossum et al., 2020</a>) 
+    can extract this information for us.
+    The following code extracts the names and order of the 
+    glyphs (the <strong>GlyphOrder</strong> table) from the font file
+    <code>Lato-Light.ttf</code> to a new file called 
+    <code>Lato-Light-GlyphOrder.ttx</code>.
+  </p>
+<div class="chunk" id="unnamed-chunk-21"><div class="rcode"><div class="source"><pre class="knitr bash">cp /usr/share/fonts/truetype/lato/Lato-Light.ttf Fonts/
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-22"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t GlyphOrder -o Fonts/Lato-Light-GlyphOrder.ttx Fonts/Lato-Light.ttf
+</pre></div>
+</div></div>
+    <p>
+    Looking at the start of the 
+    <code>Lato-Light-GlyphOrder.ttx</code> file,
+    we can see that the glyph for 'A' is the fourth glyph in the font.
+  </p>
+<div class="chunk" id="unnamed-chunk-23"><div class="rcode"><div class="source"><pre class="knitr bash">head Fonts/Lato-Light-GlyphOrder.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;ttFont sfntVersion=&quot;\x00\x01\x00\x00&quot; ttLibVersion=&quot;3.0&quot;&gt;
+  
+    &lt;GlyphOrder&gt;
+      &lt;!-- The 'id' attribute is only for humans; it is ignored when parsed. --&gt;
+      &lt;GlyphID id=&quot;0&quot; name=&quot;.notdef&quot;/&gt;
+      &lt;GlyphID id=&quot;1&quot; name=&quot;uni0000&quot;/&gt;
+      &lt;GlyphID id=&quot;2&quot; name=&quot;uni00A0&quot;/&gt;
+      &lt;GlyphID id=&quot;3&quot; name=&quot;A&quot;/&gt;
+      &lt;GlyphID id=&quot;4&quot; name=&quot;AE&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    The glyph for 'S' is the 26th glyph (NOT the 83rd).
+  </p>
+<div class="chunk" id="unnamed-chunk-24"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 '&quot;S&quot;' Fonts/Lato-Light-GlyphOrder.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;GlyphID id=&quot;22&quot; name=&quot;P&quot;/&gt;
+      &lt;GlyphID id=&quot;23&quot; name=&quot;Q&quot;/&gt;
+      &lt;GlyphID id=&quot;24&quot; name=&quot;R&quot;/&gt;
+      &lt;GlyphID id=&quot;25&quot; name=&quot;S&quot;/&gt;
+      &lt;GlyphID id=&quot;26&quot; name=&quot;T&quot;/&gt;
+      &lt;GlyphID id=&quot;27&quot; name=&quot;U&quot;/&gt;
+      &lt;GlyphID id=&quot;28&quot; name=&quot;V&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    The "fi" ligature glyph is the 42nd glyph.
+  </p>
+<div class="chunk" id="unnamed-chunk-25"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 FB01 Fonts/Lato-Light-GlyphOrder.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;GlyphID id=&quot;38&quot; name=&quot;d&quot;/&gt;
+      &lt;GlyphID id=&quot;39&quot; name=&quot;e&quot;/&gt;
+      &lt;GlyphID id=&quot;40&quot; name=&quot;f&quot;/&gt;
+      &lt;GlyphID id=&quot;41&quot; name=&quot;uniFB01&quot;/&gt;
+      &lt;GlyphID id=&quot;42&quot; name=&quot;uniFB02&quot;/&gt;
+      &lt;GlyphID id=&quot;43&quot; name=&quot;g&quot;/&gt;
+      &lt;GlyphID id=&quot;44&quot; name=&quot;h&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    What we can also see from this TTX output is that each glyph has
+    a name.  In some cases, the name is quite familiar, e.g., <code>"A"</code>
+    or <code>"S"</code> and in other cases, the name is less familiar, but still
+    useful, because it points us to the Unicode code point for the glyph, e.g.,
+    <code>"uniFB01"</code> for the "fi" ligature.  But there is a third
+    set of glyph names that are totally inscrutable.  These names are of
+    the form <code>"glyph<i>i</i></code>, where <i>i</i> simply reflects the
+    rank of the glyph within the font.  
+  </p>
+<div class="chunk" id="unnamed-chunk-26"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 glyph Fonts/Lato-Light-GlyphOrder.ttx | head -7
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;GlyphID id=&quot;235&quot; name=&quot;Tbar&quot;/&gt;
+      &lt;GlyphID id=&quot;236&quot; name=&quot;Uogonek&quot;/&gt;
+      &lt;GlyphID id=&quot;237&quot; name=&quot;aogonek&quot;/&gt;
+      &lt;GlyphID id=&quot;238&quot; name=&quot;glyph00238&quot;/&gt;
+      &lt;GlyphID id=&quot;239&quot; name=&quot;glyph00239&quot;/&gt;
+      &lt;GlyphID id=&quot;240&quot; name=&quot;glyph00240&quot;/&gt;
+      &lt;GlyphID id=&quot;241&quot; name=&quot;glyph00241&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    If we treat glyphs with an inscrutable name as non-Unicode glyphs,
+    we can find the 725th non-Unicode glyph within the font.
+    The "ti" glyph is the 2472nd glyph in the font.
+    (We have two off-by-one adjustments here, at least one of which
+    is just accounting for zero-based versus one-based indexing.)
+  </p>
+<div class="chunk" id="unnamed-chunk-27"><div class="rcode"><div class="source"><pre class="knitr bash">grep glyph Fonts/Lato-Light-GlyphOrder.ttx | sed '724q;d'
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;GlyphID id=&quot;2471&quot; name=&quot;glyph02471&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    The image below shows glyph number 2471 from <code>Lato-Light.ttf</code>
+    (viewed with FontForge; <a href="#fontforge">Williams and The FontForge Project contributors, 2020</a>).
+  </p>
+    <p>
+      <img src="ti_lig.png" alt="fontforge window showing glyph 2471 from Lato-Light.ttf">
+    </p>
+    <p>
+    This gives us the name of the glyph within the font, in this case
+    <code>glyph02471</code>.
+  </p>
+    <h3>Non-Unicode characters in R graphics output</h3>
+    <p>
+    Having established which glyph within the font LuaTeX is 
+    referring to, we are still left with the problem of
+    actually accessing that glyph from within R.
+    When we draw text in R, what gets sent to an R graphics device 
+    is a character value, not a glyph number.  We need a 
+    way to specify a character value that selects the glyph 
+    that we want.
+  </p>
+    <p>
+    The approach taken by 'dvir' to solve this problem involves 
+    creating a new mini-font that just contains the non-Unicode glyph
+    (with an encoding that maps the glyph to an ASCII character).
+    This requires several steps.
+  </p>
+    <p>
+    We can extract a single glyph from a font using 
+    <code>pyftsubset</code> from fonttools.  
+    The following code extracts glyph 2471 from <code>Lato-Light.ttf</code>
+    and saves it in a new font called <code>Lato-Light-glyph02471.ttf</code>.
+    The <code>name-IDs</code> argument will be explained later.
+  </p>
+<div class="chunk" id="unnamed-chunk-28"><div class="rcode"><div class="source"><pre class="knitr bash">pyftsubset Fonts/Lato-Light.ttf --gids=2471 --output-file=Fonts/Lato-Light-glyph02471.ttf --name-IDs='*'
+</pre></div>
+</div></div>
+    <p>
+    This new font contains no encoding, so the glyph within it is still
+    inaccessible.  Furthermore, the new font has exactly the same name
+    as the old font, which will make it difficult to specify this new font
+    separately from the original font.
+    To rename the font and 
+    add the encoding, we can convert the font to an
+    XML format, with TTX, insert an encoding (a <strong>cmap</strong> table),
+    and then convert back to TrueType format.
+  </p>
+    <p>
+    The following code converts the TrueType font to XML.
+  </p>
+
+<div class="chunk" id="unnamed-chunk-30"><div class="rcode"><div class="source"><pre class="knitr bash">ttx Fonts/Lato-Light-glyph02471.ttf
+</pre></div>
+</div></div>
+    <p>
+    In order to insert a cmap table, we need to know the name
+    of the glyph in the new font.  Unfortunately, this is not 
+    the same as the name of the glyph in the original font.
+    The following code shows the GlyphOrder table for the new font.
+  </p>
+<div class="chunk" id="unnamed-chunk-31"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(xml2)</span>
+<span class="hl std">ttx</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">read_xml</span><span class="hl std">(</span><span class="hl str">&quot;Fonts/Lato-Light-glyph02471.ttx&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">xml_find_first</span><span class="hl std">(ttx,</span> <span class="hl str">&quot;//GlyphOrder&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  {xml_node}
+  &lt;GlyphOrder&gt;
+  [1] &lt;GlyphID id=&quot;0&quot; name=&quot;.notdef&quot;/&gt;
+  [2] &lt;GlyphID id=&quot;1&quot; name=&quot;glyph00001&quot;/&gt;
+  [3] &lt;GlyphID id=&quot;2&quot; name=&quot;glyph00002&quot;/&gt;
+  [4] &lt;GlyphID id=&quot;3&quot; name=&quot;glyph00003&quot;/&gt;
+  [5] &lt;GlyphID id=&quot;4&quot; name=&quot;glyph00004&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    There are a couple of surprises: there is a <code>.notdef</code> 
+    glyph that we did not ask for (we always get this);  none of
+    the glyphs are called <code>glyph02417</code>;  and there
+    are four glyphs besides <code>.notdef</code>,
+    not just the one we asked for.
+  </p>
+    <p>
+    This has happened because the glyph that we want is actually composed
+    from several other glyphs in the original font.  We can see this
+    by looking at the <strong>glyf</strong> table of the original font.
+  </p>
+<div class="chunk" id="unnamed-chunk-32"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t glyf -o Fonts/Lato-Light-glyf.ttx Fonts/Lato-Light.ttf
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-33"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">ttx</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">read_xml</span><span class="hl std">(</span><span class="hl str">&quot;Fonts/Lato-Light-glyf.ttx&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">xml_find_first</span><span class="hl std">(ttx,</span> <span class="hl str">&quot;//TTGlyph[@name = 'glyph02471']&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  {xml_node}
+  &lt;TTGlyph name=&quot;glyph02471&quot; xMin=&quot;54&quot; yMin=&quot;-16&quot; xMax=&quot;1034&quot; yMax=&quot;1439&quot;&gt;
+  [1] &lt;component glyphName=&quot;glyph03025&quot; x=&quot;54&quot; y=&quot;0&quot; flags=&quot;0x0&quot;/&gt;
+  [2] &lt;component glyphName=&quot;glyph00294&quot; x=&quot;0&quot; y=&quot;0&quot; flags=&quot;0x0&quot;/&gt;
+  [3] &lt;component glyphName=&quot;glyph01528&quot; x=&quot;545&quot; y=&quot;0&quot; flags=&quot;0x0&quot;/&gt;
+  [4] &lt;instructions&gt;\n  &lt;assembly&gt;\n          PUSH[ ]\t/* 6 values pushed */\n          53 43 35 21 ...
+</pre></div>
+</div></div>
+    <p>
+    When there are no <code>component</code> elements, the glyph we
+    want will be the only glyph in the subsetted font, so we can just
+    use <code>glyph00001</code> from the new font.  But when the
+    glyph we want is composed from other glyphs, the subsetted font
+    will contain several glyphs, in this case four (the glyph we
+    want plus the three that it was composed from).
+  </p>
+    <p>
+    There is now the problem of figuring out which of these four glyphs 
+    is the glyph that we want.  To do this, we need to look at the
+    names of the four glyphs and find out what order they are arranged
+    in within the original font (and assume that that order is
+    retained in the subsetted font).
+  </p>
+    <p>
+    In this case, the answer is quite simple because the names of the
+    glyphs tell us their order;  <code>glyph02471</code> is the third
+    out of these four glyphs.  
+  </p>
+    <p>
+    In general, we can match the names of the glyphs from the glyf 
+    table to glyph names in the GlyphOrder table to determine their order.
+  </p>
+    <p>
+    In summary, the glyph that we want in the subsetted font has the name
+    <code>glyph00003</code>.
+    The R code below inserts a cmap table that
+    maps the number 65 (hex 41, ASCII for character "A") to 
+    <code>glyph00003</code> in the new font.
+  </p>
+<div class="chunk" id="unnamed-chunk-34"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">ttx</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">read_xml</span><span class="hl std">(</span><span class="hl str">&quot;Fonts/Lato-Light-glyph02471.ttx&quot;</span><span class="hl std">)</span>
+<span class="hl std">cmap</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">xml_find_first</span><span class="hl std">(ttx,</span> <span class="hl str">&quot;//cmap&quot;</span><span class="hl std">)</span>
+<span class="hl std">cmapTable</span> <span class="hl kwb">&lt;-</span>
+    <span class="hl kwd">read_xml</span><span class="hl std">(</span><span class="hl str">'&lt;cmap_format_4 platformID=&quot;0&quot; platEncID=&quot;3&quot; language=&quot;0&quot;/&gt;'</span><span class="hl std">)</span>
+<span class="hl kwd">xml_add_child</span><span class="hl std">(cmapTable,</span> <span class="hl str">&quot;map&quot;</span><span class="hl std">,</span> <span class="hl kwc">code</span><span class="hl std">=</span><span class="hl str">&quot;0x41&quot;</span><span class="hl std">,</span> <span class="hl kwc">name</span><span class="hl std">=</span><span class="hl str">&quot;glyph00003&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">xml_add_child</span><span class="hl std">(cmap, cmapTable)</span>
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-35"><div class="rcode"><div class="output"><pre class="knitr r">  &lt;cmap&gt;
+    &lt;tableVersion version=&quot;0&quot;/&gt;
+    &lt;cmap_format_4 platformID=&quot;0&quot; platEncID=&quot;3&quot; language=&quot;0&quot;&gt;
+      &lt;map code=&quot;0x41&quot; name=&quot;glyph00003&quot;/&gt;
+    &lt;/cmap_format_4&gt;
+  &lt;/cmap&gt;
+</pre></div>
+</div></div>
+    <p>
+    A similar approach can be used to give the new font a different name,
+    by editing the <strong>name</strong> table within the XML.
+    The <code>name-IDs</code> argument that we saw earlier in the
+    call to <code>pyftsubset</code> exports the existing font name,
+    so in this step we are just modifying the name table rather than
+    creating a new one from scratch.
+    The following code changes the "Font Family" name;  in the
+    full code, we also modify the "Full" font name, which includes 
+    possible modifiers like "Bold" or "Light", and the PostScript
+    name for the font.
+  </p>
+<div class="chunk" id="unnamed-chunk-36"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">name</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">xml_find_first</span><span class="hl std">(ttx,</span> <span class="hl str">&quot;//name&quot;</span><span class="hl std">)</span>
+<span class="hl std">familyname</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">xml_find_first</span><span class="hl std">(name,</span> <span class="hl str">&quot;namerecord[@nameID = '1']&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">xml_set_text</span><span class="hl std">(familyname,</span> <span class="hl str">&quot;custom_font_1&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+
+    <p>
+    Finally, we write the modified XML to a new file and 
+    reverse the conversion from XML back to a TrueType font.
+  </p>
+<div class="chunk" id="unnamed-chunk-38"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">write_xml</span><span class="hl std">(ttx,</span> <span class="hl str">&quot;Fonts/Lato-Light-glyph02471-enc.ttx&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+
+<div class="chunk" id="unnamed-chunk-40"><div class="rcode"><div class="source"><pre class="knitr bash">ttx Fonts/Lato-Light-glyph02471-enc.ttx
+</pre></div>
+</div></div>
+    <p>
+    We can use <code>fc-scan</code> to see that the new font has 
+    a different name from the original font.
+  </p>
+<div class="chunk" id="unnamed-chunk-41"><div class="rcode"><div class="source"><pre class="knitr bash">fc-scan Fonts/Lato-Light.ttf | grep family:
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  	family: &quot;Lato&quot;(s) &quot;Lato Light&quot;(s)
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-42"><div class="rcode"><div class="source"><pre class="knitr bash">fc-scan Fonts/Lato-Light-glyph02471-enc.ttf | grep family:
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  	family: &quot;custom_font_1&quot;(s)
+</pre></div>
+</div></div>
+    <p>
+    The last step (for Cairo graphics devices in R) is to make sure that
+    Fontconfig (<a href="#fontconfig">Packard, 2020</a>, <a href="#packard">Packard, 2002</a>) 
+    can see the new font.  This can be done by creating
+    a configuration
+    file, as shown below, and placing that in a directory that 
+    Fontconfig can see.
+  </p>
+<div class="chunk" id="unnamed-chunk-43"><div class="rcode"><div class="output"><pre class="knitr r">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&gt;
+  &lt;fontconfig&gt;
+    &lt;!--include directory containing custom font (within docker container) --&gt;
+    &lt;dir&gt;/home/work/Fonts/&lt;/dir&gt;
+  &lt;/fontconfig&gt;
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-44"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">file.copy</span><span class="hl std">(</span><span class="hl str">&quot;99-custom-font.conf&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;~/.fonts.conf.d/&quot;</span><span class="hl std">,</span> <span class="hl kwc">overwrite</span><span class="hl std">=</span><span class="hl num">TRUE</span><span class="hl std">)</span>
+</pre></div>
+</div></div>
+    <p>
+    We also need to force FontConfig to look at this new configuration.
+  </p>
+<div class="chunk" id="unnamed-chunk-45"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">gdtools</span><span class="hl opt">::</span><span class="hl kwd">fontconfig_reinit</span><span class="hl std">()</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  [1] FALSE
+</pre></div>
+</div></div>
+    <p>
+    From R, we can select this font and draw the "ti" ligature
+    by asking the font for an 'A' character.
+  </p>
+<div class="chunk" id="unnamed-chunk-46"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">png</span><span class="hl std">(</span><span class="hl str">&quot;LatoLight-ti_lig.png&quot;</span><span class="hl std">,</span> <span class="hl kwc">type</span><span class="hl std">=</span><span class="hl str">&quot;cairo&quot;</span><span class="hl std">,</span> <span class="hl kwc">width</span><span class="hl std">=</span><span class="hl num">200</span><span class="hl std">,</span> <span class="hl kwc">height</span><span class="hl std">=</span><span class="hl num">50</span><span class="hl std">)</span>
+<span class="hl kwd">grid.text</span><span class="hl std">(</span><span class="hl str">&quot;A&quot;</span><span class="hl std">,</span>
+          <span class="hl kwc">gp</span><span class="hl std">=</span><span class="hl kwd">gpar</span><span class="hl std">(</span><span class="hl kwc">fontfamily</span><span class="hl std">=</span><span class="hl str">&quot;custom_font_1&quot;</span><span class="hl std">,</span> <span class="hl kwc">cex</span><span class="hl std">=</span><span class="hl num">3</span><span class="hl std">))</span>
+<span class="hl kwd">dev.off</span><span class="hl std">()</span>
+</pre></div>
+</div></div>
+    <p>
+      <img src="LatoLight-ti_lig.png" alt="A ti ligature drawn in R using a subset of the Lato Light font">
+    </p>
+    <p>
+    Because R graphics can only use one font for drawing a piece of text,
+    we have to draw this special character as an individual piece of text.
+    However, this is how 'dvir' works generally, because the DVI output
+    that it works from contains information about every individual
+    character, so this is not a problem (or at least not a new problem).
+  </p>
+    <h3>Character metrics</h3>
+    <p>
+    The DVI output that 'dvir' is working from contains two
+    types of 
+    adjustments to the drawing location: explicit moves, 
+    e.g., the space between words
+    and kerning adjustments between letters;  and implicit moves based on
+    instructions to
+    draw a character.  The latter adjusts the drawing location
+    so that we can just draw the next character alongside this character
+    (if this is not the end of a word and there is no kerning).
+  </p>
+    <p>
+    We can see this in the DVI from our very first example.
+    The <code>set_char_83</code> instruction draws an 'S', 
+    which implicitly adjusts the current location to
+    just after the 'S'.  
+    The <code>right2</code> makes an explicit kerning adjustment.
+    We then draw an 'o', which implicitly adjusts the location, and then
+    an 'm', which implicitly adjusts the location.  
+  </p>
+<div class="chunk" id="unnamed-chunk-47"><div class="rcode"><div class="output"><pre class="knitr r">  fnt_def_1    fontnum=22, checksum=0, scale=786432, design=655360,
+               fontname=&quot;LatoLight:mode=node;script=latn;language=DFLT;+tlig;&quot;
+  fnt_num_22
+  set_char_83  'S'
+  right2       b=-4718
+  set_char_111 'o'
+  set_char_109 'm'
+</pre></div>
+</div></div>
+    <p>
+    In order to make the implicit adjustments, we must figure out
+    the width of a character (so that we can shift the current location
+    to just after the character).
+  </p>
+    <p>
+    R provides functions to calculate this <strong>font metric</strong> information,
+    e.g., <code>grid::stringWidth</code> and 
+    <code>grid::grobWidth</code>, but on some 
+    Cairo graphics devices
+    the information is not accurate enough (for drawing individual characters).
+  </p>
+    <p>
+    The following code demonstrates this problem.  We create a 'grid'
+    text grob containing the letter 'o' with the Lato Light font.
+    We open a PDF graphics device (and load the 'extrafont' package
+    so that PDF graphics devices can use system fonts like Lato Light)
+    and calculate the width of the letter "o".  ("bigpts" 
+    are PostScript's 1/72in, as compared to TeX "pts", which are 1/72.27in.)
+  </p>
+<div class="chunk" id="unnamed-chunk-48"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">tg</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">textGrob</span><span class="hl std">(</span><span class="hl str">&quot;o&quot;</span><span class="hl std">,</span> <span class="hl kwc">gp</span><span class="hl std">=</span><span class="hl kwd">gpar</span><span class="hl std">(</span><span class="hl kwc">fontfamily</span><span class="hl std">=</span><span class="hl str">&quot;Lato Light&quot;</span><span class="hl std">))</span>
+<span class="hl kwd">library</span><span class="hl std">(extrafont)</span>
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-49"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">pdf</span><span class="hl std">(</span><span class="hl str">&quot;o-metric.pdf&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">grid.draw</span><span class="hl std">(tg)</span>
+<span class="hl kwd">convertWidth</span><span class="hl std">(</span><span class="hl kwd">grobWidth</span><span class="hl std">(tg),</span> <span class="hl str">&quot;bigpts&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  [1] 6.696bigpts
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-50"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">dev.off</span><span class="hl std">()</span>
+</pre></div>
+</div></div>
+    <p>
+    Now we do the same thing on a Cario PDF graphics device,
+    but we get a different width (because the Cairo graphics devices
+    only get metric values to the nearest "pixel").
+  </p>
+<div class="chunk" id="unnamed-chunk-51"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">cairo_pdf</span><span class="hl std">(</span><span class="hl str">&quot;o-metric-cairo.pdf&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">grid.draw</span><span class="hl std">(tg)</span>
+<span class="hl kwd">convertWidth</span><span class="hl std">(</span><span class="hl kwd">grobWidth</span><span class="hl std">(tg),</span> <span class="hl str">&quot;bigpts&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  [1] 7.00000000000001bigpts
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-52"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">dev.off</span><span class="hl std">()</span>
+</pre></div>
+</div></div>
+    <p>
+    What this means is that, in order to position text exactly the same as
+    LuaTeX has described in its DVI output,
+    we cannot use the Cairo graphics metric information.
+  </p>
+    <p>
+    Two solutions to this problem have been implemented.
+    In the previous version of 'dvir', using the TeX engine, a PDF graphics
+    device is used to calculate character metrics
+    even on Cairo PDF devices.
+    In this new version of 'dvir', when we use the LuaTeX engine and
+    a non-Computer Modern font,
+    character metrics are calculated
+    by extracting the information from the font file directly.
+    This is because using a PDF graphics device to calculate character
+    metrics would be difficult because we are trying to support 
+    a very wide range of character input (Unicode).
+  </p>
+    <p>
+    Again, the first step is to use TTX to extract metric information
+    to an XML format.
+  </p>
+<div class="chunk" id="unnamed-chunk-53"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t hmtx -o Fonts/Lato-Light-hmtx.ttx Fonts/Lato-Light.ttf
+</pre></div>
+</div></div>
+    <p>
+    We can see that the resulting file contains width information
+    for each glyph in the font.
+  </p>
+<div class="chunk" id="unnamed-chunk-54"><div class="rcode"><div class="source"><pre class="knitr bash">head Fonts/Lato-Light-hmtx.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;ttFont sfntVersion=&quot;\x00\x01\x00\x00&quot; ttLibVersion=&quot;3.0&quot;&gt;
+  
+    &lt;hmtx&gt;
+      &lt;mtx name=&quot;.notdef&quot; width=&quot;1025&quot; lsb=&quot;47&quot;/&gt;
+      &lt;mtx name=&quot;A&quot; width=&quot;1311&quot; lsb=&quot;26&quot;/&gt;
+      &lt;mtx name=&quot;AE&quot; width=&quot;1855&quot; lsb=&quot;10&quot;/&gt;
+      &lt;mtx name=&quot;AEacute&quot; width=&quot;1855&quot; lsb=&quot;10&quot;/&gt;
+      &lt;mtx name=&quot;Aacute&quot; width=&quot;1311&quot; lsb=&quot;26&quot;/&gt;
+      &lt;mtx name=&quot;Abreve&quot; width=&quot;1311&quot; lsb=&quot;26&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    One complication is determining the scale of those widths.
+    This requires looking at the <strong>head</strong> table from the font,
+    in particular the <code>unitsPerEm</code> information.
+  </p>
+<div class="chunk" id="unnamed-chunk-55"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t head -o Fonts/Lato-Light-head.ttx Fonts/Lato-Light.ttf
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-56"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 unitsPerEm Fonts/Lato-Light-head.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;checkSumAdjustment value=&quot;0x932003c8&quot;/&gt;
+      &lt;magicNumber value=&quot;0x5f0f3cf5&quot;/&gt;
+      &lt;flags value=&quot;00000000 00011011&quot;/&gt;
+      &lt;unitsPerEm value=&quot;2000&quot;/&gt;
+      &lt;created value=&quot;Fri Jan 22 17:43:08 2010&quot;/&gt;
+      &lt;modified value=&quot;Thu Feb 27 03:42:25 2014&quot;/&gt;
+      &lt;xMin value=&quot;-959&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    The character width, in points, is the font size (in whole points) 
+    multiplied by the width metric (scaled to 1000 unitsPerEm and then
+    scaled to a unit square).  The following code and output shows how
+    we can obtain the correct width of a "o" character.
+  </p>
+<div class="chunk" id="unnamed-chunk-57"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 '&quot;o&quot;' Fonts/Lato-Light-hmtx.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;mtx name=&quot;ntilde&quot; width=&quot;1100&quot; lsb=&quot;164&quot;/&gt;
+      &lt;mtx name=&quot;nu&quot; width=&quot;1007&quot; lsb=&quot;39&quot;/&gt;
+      &lt;mtx name=&quot;numbersign&quot; width=&quot;1160&quot; lsb=&quot;80&quot;/&gt;
+      &lt;mtx name=&quot;o&quot; width=&quot;1116&quot; lsb=&quot;104&quot;/&gt;
+      &lt;mtx name=&quot;oacute&quot; width=&quot;1116&quot; lsb=&quot;104&quot;/&gt;
+      &lt;mtx name=&quot;obreve&quot; width=&quot;1116&quot; lsb=&quot;104&quot;/&gt;
+      &lt;mtx name=&quot;ocircumflex&quot; width=&quot;1116&quot; lsb=&quot;104&quot;/&gt;
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-58"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl num">12</span> <span class="hl opt">*</span> <span class="hl num">1116</span><span class="hl opt">/</span><span class="hl std">(</span><span class="hl num">2000</span><span class="hl opt">/</span><span class="hl num">1000</span><span class="hl std">)</span><span class="hl opt">/</span><span class="hl num">1000</span>
+</pre></div>
+<div class="output"><pre class="knitr r">  [1] 6.696
+</pre></div>
+</div></div>
+    <p>
+    All that remains is to locate the correct character metric.
+    We can see from <code>Lato-Light-hmtx.ttx</code> that this requires
+    finding the correct glyph name for the character.
+  </p>
+    <p>
+    The <a href="https://rsms.me/fonttools-docs/#the-ttx-file-format">fontTools</a>
+    documentation describes how the glyph names in the TTX files are determined
+    and 'dvir' attempts to mimic that in order
+    to obtain an appropriate glyph name.  For example, an 'o' character
+    will be a <code>set_char_111</code> (6F in hex) in DVI and we can use the
+    <a href="https://github.com/adobe-type-tools/agl-aglfn/blob/master/glyphlist.txt">Adobe Glyph List</a>
+    to map <code>006F</code> to the glyph name "o".
+    Because the glyphs names in TTX output o not always use the
+    Adobe Glyph List names, we also generate glyph names of the form
+    <code>uniXXXX</code>, where <code>XXXX</code> is the relevant
+    UTF8 code point.  Furthermore, in some fonts, a single glyph 
+    may be used for multiple characters and,
+    in that case, the font may not contain a
+    glyph with the expected name.  To help with this case, we also
+    generate a glyph name from the Unicode <strong>cmap</strong> table within a font
+    (if it exists).
+  </p>
+    <p>
+    For example, a "-" (dash or hyphen or "hyphen-minus") character 
+    will be a <code>set_char_45</code> (2D in hex) in DVI.
+    The Adobe Glyph List maps <code>002D</code> to the name "hyphen",
+    so that is the first name that we will try.  Unfortunately, 
+    a font may not contain a glyph named "hyphen".
+  </p>
+<div class="chunk" id="unnamed-chunk-59"><div class="rcode"><div class="source"><pre class="knitr bash">grep -c -i hyphen Fonts/Lato-Light-hmtx.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  0
+</pre></div>
+</div></div>
+    <p>
+    We also try the glyph name <code>uni002D</code>, but in this case,
+    there is no glyph of that name either.
+  </p>
+<div class="chunk" id="unnamed-chunk-60"><div class="rcode"><div class="source"><pre class="knitr bash">grep -c -i 002D Fonts/Lato-Light-hmtx.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  0
+</pre></div>
+</div></div>
+    <p>
+    Finally, we look in the Unicode cmap table to see which glyph
+    is being used for the code point <code>002D</code>.
+  </p>
+<div class="chunk" id="unnamed-chunk-61"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t cmap -o Fonts/Lato-Light-cmap.ttx Fonts/Lato-Light.ttf
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  Dumping &quot;Fonts/Lato-Light.ttf&quot; to &quot;Fonts/Lato-Light-cmap.ttx&quot;...
+  Dumping 'cmap' table...
+</pre></div>
+</div></div>
+<div class="chunk" id="unnamed-chunk-62"><div class="rcode"><div class="source"><pre class="knitr bash">xmllint --xpath &quot;//cmap_format_4[@platformID='0']/map[@code='0x2d']&quot; Fonts/Lato-Light-cmap.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">  &lt;map code=&quot;0x2d&quot; name=&quot;uni00AD&quot;/&gt;
+</pre></div>
+</div></div>
+    <p>
+    This tells us that the glyph <code>uni00AD</code> (a "soft hyphen") 
+    is being used for code point <code>002D</code> ("hyphen-minus"),
+    so we look for that name as well.  And there is metric information
+    for that glyph.
+  </p>
+<div class="chunk" id="unnamed-chunk-63"><div class="rcode"><div class="source"><pre class="knitr bash">grep -i 00AD Fonts/Lato-Light-hmtx.ttx
+</pre></div>
+
+<div class="output"><pre class="knitr bash">      &lt;mtx name=&quot;uni00AD&quot; width=&quot;740&quot; lsb=&quot;138&quot;/&gt;
+</pre></div>
+</div></div>
+    <h2>
+      <a name="examples">5. Examples</a>
+    </h2>
+    <p>
+    As demonstrated by the simple example in the Section 
+    <a href="#dvir-luatex">Adding LuaTeX support to 'dvir'</a>, one benefit of adding LuaTeX support
+    to the 'dvir' package is that we can easily make use of
+    fonts beyond the Computer Modern family.  To be clear, this 
+    is extending the range of fonts that we can use to
+    draw text with TeX-quality typesetting in R graphics;
+    it was already possible to draw a normal R character value with a wide
+    range of fonts, but that sort of text is not typeset with any
+    sophistication.
+  </p>
+    <p>
+    The next example makes it clearer that we are <em>typesetting</em> text
+    (using LuaTeX) rather than just relying on R's text-drawing facilities.
+    The LuaTeX document below describes text with several interesting 
+    features:  the main font is <a href="https://fonts.google.com/specimen/Economica">Economica</a> (a Google font that has been downloaded to a local file);
+    the first line of text is bold;  and the remaining text is
+    typeset in a paragraph with steadily decreasing line length.
+  </p>
+<div class="chunk" id="unnamed-chunk-64"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+  \usepackage{fontspec} 
+  \setmainfont{Economica-regular.ttf}[
+    BoldFont=Economica-bold.ttf,
+    ItalicFont=Economica-italic.ttf,
+    BoldItalicFont=Economica-bolditalic.ttf 
+  ]
+  \begin{document}
+  \fontsize{14}{16}\selectfont
+  \begin{minipage}{3in}
+  {\bf Longley's Economic Regression Data:}
+  
+  \parshape 5
+  0pt .7\textwidth
+  0pt .6\textwidth
+  0pt .5\textwidth
+  0pt .4\textwidth
+  0pt .3\textwidth
+  A macroeconomic data set which provides a well-known example for a
+  highly collinear regression.
+  
+  \end{minipage}
+  \end{document}
+</pre></div>
+</div></div>
+    <p>
+    The following code combines that typeset text with an R plot (in R).
+    First, we draw a simple barplot.
+    Then we call <code>grid.latex</code> 
+    from the 'dvir' package to typeset the text using LuaTeX and then
+    draw the result within the R plot. Some of the clues that tell
+    us this is typeset text rather than just R drawing a character value
+    are the stretching of space between words (e.g., on the first line
+    of non-bold text) and the hyphenation of some words at line breaks.
+  </p>
+<div class="chunk" id="unnamed-chunk-65"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">barplot</span><span class="hl std">(GNP</span> <span class="hl opt">~</span> <span class="hl std">Year,</span> <span class="hl kwc">data</span> <span class="hl std">= longley)</span>
+<span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-float.tex&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">grid.latex</span><span class="hl std">(latex,</span> <span class="hl kwc">engine</span><span class="hl std">=luatexEngine,</span> <span class="hl kwc">preamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">postamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span>
+           <span class="hl kwc">x</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;npc&quot;</span><span class="hl std">)</span> <span class="hl opt">-</span> <span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">5</span><span class="hl std">,</span> <span class="hl str">&quot;in&quot;</span><span class="hl std">),</span>
+           <span class="hl kwc">y</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;npc&quot;</span><span class="hl std">)</span> <span class="hl opt">-</span> <span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;in&quot;</span><span class="hl std">),</span>
+           <span class="hl kwc">just</span><span class="hl std">=</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;left&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;top&quot;</span><span class="hl std">))</span>
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-65-1.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" class="plot" /></div></div>
+    <p>
+    The next example demonstrates that, in addition to providing 
+    an easy way to select a wider range of fonts, adding LuaTeX 
+    support to 'dvir' provides access to LuaTeX's sophisticated 
+    font handling features.
+    For example, the following LuaTeX document typesets the same
+    piece of text twice:  once with the standard Computer Modern font
+    (actually LuaTeX selects the Latin Modern font, but that is 
+    very similar to Computer Modern)
+    and once using the Lato Light
+    font with so-called "discretionary" ligatures (ch, ct, ck) and
+    "old-style" numerals (with varying heights and alignments) selected.
+    These font features are not accessible from R's standard 
+    text drawing functions.
+  </p>
+<div class="chunk" id="unnamed-chunk-66"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+  \usepackage{fontspec} 
+  \begin{document}
+  \fontsize{14}{16}\selectfont
+  \begin{minipage}{3in}
+  characteristick 0123456789\\
+  \fontspec{Lato Light}[Ligatures=Discretionary,Numbers=OldStyle]
+  characteristick 0123456789
+  \end{minipage}
+  \end{document}
+</pre></div>
+</div></div>
+    <p>
+    The following code draws the resulting typeset text in R.
+  </p>
+<div class="chunk" id="unnamed-chunk-67"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-features.tex&quot;</span><span class="hl std">)</span>
+<span class="hl kwd">grid.latex</span><span class="hl std">(latex,</span> <span class="hl kwc">engine</span><span class="hl std">=luatexEngine,</span> <span class="hl kwc">preamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">postamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">)</span>
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-67-1.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" class="plot" /></div></div>
+    <!--
+    Permission to "reproduce" Thomas Rahlf's figure obtained.
+  -->
+    <p>
+    The final example comes from
+    Thomas Rahlf's "Data Visualisation with R" (<a href="#Rahlf2017Data">Rahlf, 2017</a>).
+    In the original example in the book, an R plot is included within a LaTeX 
+    document with the LaTeX text overlaid on the plot using the
+    LaTeX package 'overpic' (i.e., using LaTeX to combine the plot and text).
+    The example below demonstrates an R-driven alternative, where we
+    overlay text on a plot using R to combine the two.
+  </p>
+    <p>
+    The R code for the plot is provided in a 
+    <a href="rahlf-plot.R">separate file</a> 
+    (downloaded from the <a href="http://www.datavisualisation-r.com/data/">book
+    web site</a>).  The result of running the code
+    is shown below;  note the use of the Lato Light font
+    for labelling.
+  </p>
+<div class="chunk" id="unnamed-chunk-68"><div class="rimage default"><img src="figure/unnamed-chunk-68-1.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" class="plot" /></div></div>
+    <p>
+    The LaTeX code that describes the text to overlay on the plot is shown below
+    (also taken from the book web site).  Important points to note here
+    are the use of Lato Light font and the fact that the text is 
+    typeset in a two-column format.
+  </p>
+<div class="chunk" id="unnamed-chunk-69"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+  \usepackage{multicol}
+  \setlength{\columnsep}{1cm}
+  \usepackage{fontspec} 
+  \setmainfont[Mapping=text-tex]{Lato Light} 
+  \begin{document}
+  \pagestyle{empty}
+  \fontsize{12pt}{17pt}\selectfont
+  \begin{minipage}[t]{16.25cm}
+  \begin{multicols}{2} 
+  From a general and economic policy perspective, the entire period from
+  1820 to 1930 can be described as a relatively liberal period. With the
+  &quot;Pacific War&quot;, as a result of which the nitrate mines were awarded to
+  Chile, the economy experienced a profound upswing. The period from
+  1940 to 1973 is generally seen as a phase in which the government
+  increasingly intervened in the economy and Chile was isolated
+  internationally. During the Allende regime (1971 to 1973), this policy
+  was exaggerated and the economy practically became a central
+  economy. The military regime (1973 to 1990) - despite numerous
+  violations of human rights - ensured liberalization of trade and
+  finance.
+  \end{multicols}
+  \end{minipage} 
+  \end{document}
+</pre></div>
+</div></div>
+    <p>
+    The following code performs the overlay of the text on the plot
+    using 'dvir'.  A little bit of set up is necessary to convert
+    the original 'graphics' plot to a 'grid' plot (using the 
+    'gridGraphics' package; <a href="#pkg:gridgraphics">Murrell and Wen, 2020</a>,
+    <a href="#RJ-2015-012">Murrell, 2015</a>), 
+    but the drawing of the text requires 
+    just a single function call to <code>grid.latex</code>.
+  </p>
+<div class="chunk" id="unnamed-chunk-70"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl com">## Draw main plot</span>
+<span class="hl kwd">source</span><span class="hl std">(</span><span class="hl str">&quot;rahlf-plot.R&quot;</span><span class="hl std">)</span>
+<span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;rahlf-text.tex&quot;</span><span class="hl std">)</span>
+<span class="hl std">gridGraphics</span><span class="hl opt">::</span><span class="hl kwd">grid.echo</span><span class="hl std">()</span>
+<span class="hl kwd">downViewport</span><span class="hl std">(</span><span class="hl str">&quot;graphics-plot-1&quot;</span><span class="hl std">)</span>
+<span class="hl com">## Add LuaTeX typeset text</span>
+<span class="hl kwd">grid.latex</span><span class="hl std">(latex,</span> <span class="hl kwc">preamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">postamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">engine</span><span class="hl std">=luatexEngine,</span>
+           <span class="hl kwc">x</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;cm&quot;</span><span class="hl std">),</span> <span class="hl kwc">y</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;npc&quot;</span><span class="hl std">)</span> <span class="hl opt">-</span> <span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;cm&quot;</span><span class="hl std">),</span>
+           <span class="hl kwc">just</span><span class="hl std">=</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;left&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;top&quot;</span><span class="hl std">))</span>
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-70-1.png" title="plot of chunk unnamed-chunk-70" alt="plot of chunk unnamed-chunk-70" class="plot" /></div></div>
+    <p>
+    One important thing to note is how the text is positioned relative
+    to the plot;  the top-left of the text is exactly 1cm in from the top-left
+    corner of the plot region.  This very explicit and precise 
+    positioning is in contrast to the LaTeX-driven approach of
+    the original figure in Rahlf's book.  The relevant piece of LaTeX
+    code that performs the positioning in that case is shown below;
+    the position <code>(60,128)</code>, which dictates the location of 
+    the text on the plot, is 6cm in and 12.8 cm up 
+    from the bottom-left of the entire plot
+    image; it is not relative to the plot region within the plot.
+    That is very much a trial-and-error location compared
+    to the deliberate and expressive positioning that is possible 
+    when combining the text with the plot in R.
+  </p>
+    <pre>
+\begin{overpic}[scale=1,unit=1mm]{timeseries_areas_below_inc.pdf}
+\put(60,128)
+  </pre>
+    <h2>
+      <a name="discussion">6. Discussion</a>
+    </h2>
+    <p>
+    The 'dvir' package provides a way to include typeset text within
+    an R plot.
+    The new version of the 'dvir' package, which adds support for the
+    LuaTeX engine, provides access to a much
+    wider range of typeset text, including a wider range of fonts.
+  </p>
+    <p>
+    On the downside, many limitations of the original package remain.
+    Drawing is very slow and support is only limited to 
+    specific R graphics devices (so far).  Even worse, LuaTeX support 
+    is only offered for Cairo-based graphics devices (at this point).
+    Furthermore, the package has only been tested (and is only expected
+    to run) on Linux;  it only makes use of Linux-based font-related tools
+    like FontConfig and fonttools. This package remains a proof-of-concept.
+  </p>
+    <p>
+    On the other hand, for anyone working
+    on Linux and/or prepared to make use of Docker it might provide
+    a way to produce graphical results that are not obtainable any
+    other way.
+  </p>
+    <p>
+    When the package does not produce the desired result, 
+    the most likely source of problems is fonts.
+    LuaTeX may make use of system fonts or TeX fonts.
+    For system fonts, 'dvir' uses 'extrafont' to specify the
+    font to R graphics.
+    If a font is not found, 
+    try running  first to make sure that
+    'extrafont' knows about all of your fonts and/or install additional
+    font packages on your system.
+    The <code>extrafont::font_import()</code> function
+    can also be used to make sure that 'dvir' knows about local fonts that are 
+    not installed on the system (like the Economica font used in one
+    example in this report).
+  </p>
+    <h2>
+      <a name="requirements">7. Technical requirements</a>
+    </h2>
+    <p>
+    The examples and discussion in this document relate to <a href="https://github.com/pmur002/dvir/releases/tag/v0.2-0">version
+    0.2-0</a> of the 'dvir' package.  The 'dvir' package is still
+    dependent upon a <a href="https://github.com/pmur002/gdtools">fork</a> of the
+    'gdtools' package, which contains a <code>fontconfig_reinit</code>
+    function (to force FontConfig to reload configuration files).  The
+    main 'gdtools' package (<a href="#pkg:gdtools">Gohel et al., 2020</a>) included this
+    function, but then abdicated font-related functionality to the
+    'systemfonts' package (<a href="#pkg:systemfonts">Pedersen et al., 2019</a>) and that
+    package currently has no way to force FontConfig to reload
+    configuration files.
+  </p>
+    <p>
+    This report was generated within a Docker container
+    (see <a href="#Resources">Resources</a> section below).
+  </p>
+    <h2>
+      <a name="Resources">8. Resources</a>
+    </h2>
+    <ul>
+      <li>
+      The <a href="dvir-luatex.cml">raw source file</a> for this
+      report, a <a href="dvir-luatex.xml">valid XML</a>
+      transformation of the source file, a <a href="dvir-luatex.Rhtml">'knitr' document</a> generated from
+      the XML file, 
+      two <a href="toc.R">R</a> <a href="bib.R">files</a> and
+      the <a href="dvir-luatex.bib">bibtex file</a>
+      that are used to generate the table of contents and reference sections,
+      two <a href="common.xsl">XSL</a> <a href="knitr.xsl">files</a> and an 
+      <a href="knit.R">R file</a> that are used to transform the XML to
+      the 'knitr' document, and a <a href="Makefile">Makefile</a> that
+      contains code for the other transformations and coordinates
+      everything.  
+      These materials are also available
+      on <a href="https://github.com/pmur002/dvir-luatex-report/releases/tag/v1">github</a>.
+    </li>
+      <li>
+      The LaTeX documents used in examples are:
+      <a href="luatex-demo.tex"><code>luatex-demo.tex</code></a>,
+      <a href="luatex-demo-unicode.tex"><code>luatex-demo-unicode.tex</code></a>,
+      <a href="luatex-demo-flig.tex"><code>luatex-demo-flig.tex</code></a>,
+      <a href="luatex-demo-tlig.tex"><code>luatex-demo-tlig.tex</code></a>,
+      <a href="luatex-float.tex"><code>luatex-float.tex</code></a>, 
+      and
+      <a href="luatex-features.tex"><code>luatex-features.tex</code></a>.
+      The files for Thomas Rahlf's figure are:
+      <a href="rahlf-plot.R">rahlf-plot.R</a> for the plot and
+      <a href="rahlf-text.tex">rahlf-text.tex</a> for the text.
+      The example FontConfig configuration file is:
+      <a href="99-custom-font.conf">99-custom-font.conf</a>.
+    </li>
+      <li>
+      This report was generated within a 
+      <a href="https://www.docker.com/">Docker</a> container.
+      The Docker command to build the report is included in the Makefile above.
+      The Docker image for the container is available from
+      <a href="https://hub.docker.com/r/pmur002/dvir-luatex/">Docker Hub</a>;
+      alternatively, the image can be rebuilt from its 
+      <a href="Dockerfile">Dockerfile</a>.
+    </li>
+    </ul>
+    <h2>How to cite this document</h2>
+    <p>
+    Murrell, P. (2020). 
+    "The Agony and the Ecstacy: Adding LuaTeX support to 'dvir'" 
+    Technical Report 2020-??, Department of Statistics, The University of Auckland. 
+    [ <a href="how-to-cite.bib">bib</a> ] 
+  </p>
+    <h2>
+      <a name="references">9. References</a>
+    </h2>
+    <dl>
+      <dt>
+[<a name="pkg:gdtools">Gohel et al., 2020</a>]
+</dt>
+      <dd>
+Gohel, D., Wickham, H., Henry, L., Ooms, J., Qiu, Y., Team, R. C., and
+  RStudio (2020).
+ <em>gdtools: Utilities for Graphical Rendering</em>.
+ R package version 0.1.7.9001.
+[ <a href="dvir-luatex-bib_bib.html#pkg:gdtools">bib</a> ]
+
+</dd>
+      <dt>
+[<a name="luatex">Hagen et al., 2020</a>]
+</dt>
+      <dd>
+Hagen, H., Henkel, H., Hoekwater, T., and Scarso, L. (2020).
+ <em>LuaTeX</em>.
+[ <a href="dvir-luatex-bib_bib.html#luatex">bib</a> ]
+
+</dd>
+      <dt>
+[<a name="Knuth:1986:TEX:1102013">Knuth, 1986</a>]
+</dt>
+      <dd>
+Knuth, D. E. (1986).
+ <em>The TeXbook</em>.
+ Addison-Wesley Professional.
+[ <a href="dvir-luatex-bib_bib.html#Knuth:1986:TEX:1102013">bib</a> ]
+
+</dd>
+      <dt>
+[<a name="RJ-2015-012">Murrell, 2015</a>]
+</dt>
+      <dd>
+Murrell, P. (2015).
+ The gridGraphics Package.
+ <em>The R Journal</em>, 7(1):151--162.
+[ <a href="dvir-luatex-bib_bib.html#RJ-2015-012">bib</a> | 
+<a href="https://journal.r-project.org/archive/2015/RJ-2015-012/index.html">.html</a> ]
+
+</dd>
+      <dt>
+[<a name="murrell-dvir">Murrell, 2018</a>]
+</dt>
+      <dd>
+Murrell, P. (2018).
+ Revisiting mathematical equations in R: the 'dvir' package.
+ Technical Report 2018-08, Department of Statistics, The University of
+  Auckland.
+ version 2.
+[ <a href="dvir-luatex-bib_bib.html#murrell-dvir">bib</a> ]
+
+</dd>
+      <dt>
+[<a name="pkg:dvir">Murrell, 2020</a>]
+</dt>
+      <dd>
+Murrell, P. (2020).
+ <em>dvir: Render DVI Files</em>.
+ R package version 0.2-0.
+[ <a href="dvir-luatex-bib_bib.html#pkg:dvir">bib</a> ]
+
+</dd>
+      <dt>
+[<a name="pkg:gridgraphics">Murrell and Wen, 2020</a>]
+</dt>
+      <dd>
+Murrell, P. and Wen, Z. (2020).
+ <em>gridGraphics: Redraw Base Graphics Using 'grid' Graphics</em>.
+ R package version 0.5-0.
+[ <a href="dvir-luatex-bib_bib.html#pkg:gridgraphics">bib</a> | 
+<a href="https://CRAN.R-project.org/package=gridGraphics">http</a> ]
+
+</dd>
+      <dt>
+[<a name="packard">Packard, 2002</a>]
+</dt>
+      <dd>
+Packard, K. (2002).
+ Font configuration and customization for open source systems.
+ Gnome Users and Developers European Conference.
+[ <a href="dvir-luatex-bib_bib.html#packard">bib</a> | 
+<a href="https://keithp.com/~keithp/talks/guadec2002/">http</a> ]
+
+</dd>
+      <dt>
+[<a name="fontconfig">Packard, 2020</a>]
+</dt>
+      <dd>
+Packard, K. (2020).
+ <em>FontConfig</em>.
+[ <a href="dvir-luatex-bib_bib.html#fontconfig">bib</a> | 
+<a href="https://www.freedesktop.org/wiki/Software/fontconfig/">http</a> ]
+
+</dd>
+      <dt>
+[<a name="pkg:systemfonts">Pedersen et al., 2019</a>]
+</dt>
+      <dd>
+Pedersen, T. L., Ooms, J., and Govett, D. (2019).
+ <em>systemfonts: System Native Font Finding</em>.
+ R package version 0.1.1.
+[ <a href="dvir-luatex-bib_bib.html#pkg:systemfonts">bib</a> | 
+<a href="https://CRAN.R-project.org/package=systemfonts">http</a> ]
+
+</dd>
+      <dt>
+[<a name="R">R Core Team, 2019</a>]
+</dt>
+      <dd>
+R Core Team (2019).
+ <em>R: A Language and Environment for Statistical Computing</em>.
+ R Foundation for Statistical Computing, Vienna, Austria.
+[ <a href="dvir-luatex-bib_bib.html#R">bib</a> | 
+<a href="https://www.R-project.org/">http</a> ]
+
+</dd>
+      <dt>
+[<a name="Rahlf2017Data">Rahlf, 2017</a>]
+</dt>
+      <dd>
+Rahlf, T. (2017).
+ <em>Data Visualisation with R : 100 Examples</em>.
+[ <a href="dvir-luatex-bib_bib.html#Rahlf2017Data">bib</a> | 
+<a href="http://www.worldcat.org/isbn/9783319497501">http</a> ]
+
+</dd>
+      <dt>
+[<a name="fonttools">van Rossum et al., 2020</a>]
+</dt>
+      <dd>
+van Rossum, J., Wise, P., and Esfahbod, B. (2020).
+ <em>FontTools: A library to manipulate font files from Python</em>.
+[ <a href="dvir-luatex-bib_bib.html#fonttools">bib</a> | 
+<a href="https://github.com/fonttools/fonttools">http</a> ]
+
+</dd>
+      <dt>
+[<a name="fontforge">Williams and The FontForge Project contributors, 2020</a>]
+</dt>
+      <dd>
+Williams, G. and The FontForge Project contributors (2020).
+ <em>FontForge</em>.
+[ <a href="dvir-luatex-bib_bib.html#fontforge">bib</a> | 
+<a href="https://fontforge.org/en-US/">http</a> ]
+
+</dd>
+    </dl>
+    <h2>Footnotes</h2>
+    <div>
+      <p class="footnote"><sup>1</sup><a name="terminology"></a>
+      Some terminology: 
+      A <strong>TeX document</strong> consists of a combination of text to typeset
+      and (low-level) TeX commands to do the typesetting.  
+      A <strong>LaTeX document</strong> consists of a combination of text to
+      typeset and (higher-level) LaTeX commands to do the typesetting.
+      A <strong>LuaTeX document</strong> consists of a combination of text
+      to typeset and (higher-level) LaTeX commands to do the typesetting
+      <em>and</em> (optionally) Lua code to do crazy things.
+      A TeX document 
+      is processed by a <strong>TeX engine</strong>, an executable program,
+      to produce a typeset document, in some format.
+      Most TeX engines provide a LaTeX variant that processes LaTeX documents.
+      The original TeX engine provides a <code>latex</code> program to
+      typeset a LaTeX document in DVI format.
+      The pdfTeX engine provides a <code>pdflatex</code> program to
+      typeset a LaTeX document in PDF format.
+      The LuaTeX engine provides a <code>lualatex</code> program to
+      typeset a LuaTeX document in PDF format <em>and</em> a 
+      <code>dvilualatex</code> program to 
+      typeset a LuaTeX document in DVI format.
+    </p>
+    </div>
+    <hr>
+    <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img class="CC" alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a><br><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">This document</span>
+    by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Paul
+    Murrell</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+    Commons Attribution 4.0 International License</a>.
+  </p>
+    <script>
+  var pdfcanvas = document.querySelectorAll("canvas.pdf");
+
+  function renderPDF(i) {
+    var canvas = pdfcanvas[i];
+    var canvasid = canvas.id;
+    console.log("loop " + canvasid);
+    var loadingTask = pdfjsLib.getDocument(canvasid + '.pdf');
+    loadingTask.promise.then(function(pdf) {
+        pdf.getPage(1).then(function(page) {
+            console.log("pdf" + canvasid);
+            var scale = canvas.getAttribute("scale");
+            if (!scale) {
+                scale = 100/72;
+            }
+            var viewport = page.getViewport({ scale: scale, });
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var renderContext = {
+                  canvasContext: context,
+                  viewport: viewport
+              };
+            var renderTask = page.render(renderContext);
+            renderTask.promise.then(function() {
+                if (i + 1 < pdfcanvas.length) {
+                    renderPDF(i + 1)
+                }
+            });   
+         });
+    });
+  }
+
+  function loadPDFs() {
+    if (pdfcanvas.length > 0) {
+        renderPDF(0);
+    }
+  }
+
+  loadPDFs();
+  </script>
+  </body>
+</html>
