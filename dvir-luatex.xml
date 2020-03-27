@@ -103,12 +103,6 @@ options(bitmapType="cairo")
       </ul>
     </div>
     <rcode echo="FALSE" results="hide" message="FALSE" warning="FALSE"><![CDATA[
-## FORCE install of my 'gdtools' fork so that gdtools::fontconfig_reinit()
-## does something (recent 'gdtools' have dropped this facility and passed
-## the buck to 'systemfonts', which does not have similar functionality).
-library(devtools)
-install_github("pmur002/gdtools")
-
 ## Make 'extrafont' aware of local font(s)
 extrafont::font_import(".", prompt=FALSE)
   ]]></rcode>
@@ -769,10 +763,12 @@ cat(readLines("99-custom-font.conf"), sep="\n")
 file.copy("99-custom-font.conf", "~/.fonts.conf.d/", overwrite=TRUE)
   ]]></rcode>
     <p>
-    We also need to force FontConfig to look at this new configuration.
+    We also need to force FontConfig to look at this new configuration,
+    which we can do 
+    using the 'systemfonts' package (<a href="#pkg:systemfonts">Pedersen et al., 2020</a>).
   </p>
     <rcode><![CDATA[
-gdtools::fontconfig_reinit()
+systemfonts::reset_font_cache()
   ]]></rcode>
     <p>
     From R, we can select this font and draw the "ti" ligature
@@ -1165,15 +1161,10 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
     </h2>
     <p>
     The examples and discussion in this document relate to <a href="https://github.com/pmur002/dvir/releases/tag/v0.2-0">version
-    0.2-0</a> of the 'dvir' package.  The 'dvir' package is still
-    dependent upon a <a href="https://github.com/pmur002/gdtools">fork</a> of the
-    'gdtools' package, which contains a <code>fontconfig_reinit</code>
-    function (to force FontConfig to reload configuration files).  The
-    main 'gdtools' package (<a href="#pkg:gdtools">Gohel et al., 2020</a>) included this
-    function, but then abdicated font-related functionality to the
-    'systemfonts' package (<a href="#pkg:systemfonts">Pedersen et al., 2019</a>) and that
-    package currently has no way to force FontConfig to reload
-    configuration files.
+    0.2-0</a> of the 'dvir' package and
+    <a href="https://github.com/r-lib/systemfonts">the development version</a>
+    of the 'systemfonts' package (for the <code>reset_font_cache</code> 
+    function).
   </p>
     <p>
     This report was generated within a Docker container
@@ -1209,10 +1200,10 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
       and
       <a href="luatex-features.tex"><code>luatex-features.tex</code></a>.
       The files for Thomas Rahlf's figure are:
-      <a href="rahlf-plot.R">rahlf-plot.R</a> for the plot and
-      <a href="rahlf-text.tex">rahlf-text.tex</a> for the text.
+      <a href="rahlf-plot.R"><code>rahlf-plot.R</code></a> for the plot and
+      <a href="rahlf-text.tex"><code>rahlf-text.tex</code></a> for the text.
       The example FontConfig configuration file is:
-      <a href="99-custom-font.conf">99-custom-font.conf</a>.
+      <a href="99-custom-font.conf"><code>99-custom-font.conf</code></a>.
     </li>
       <li>
       This report was generated within a 
@@ -1235,17 +1226,6 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
       <a name="references">9. References</a>
     </h2>
     <dl>
-      <dt>
-[<a name="pkg:gdtools">Gohel et al., 2020</a>]
-</dt>
-      <dd>
-Gohel, D., Wickham, H., Henry, L., Ooms, J., Qiu, Y., Team, R. C., and
-  RStudio (2020).
- <em>gdtools: Utilities for Graphical Rendering</em>.
- R package version 0.1.7.9001.
-[ <a href="dvir-luatex-bib_bib.html#pkg:gdtools">bib</a> ]
-
-</dd>
       <dt>
 [<a name="luatex">Hagen et al., 2020</a>]
 </dt>
@@ -1331,14 +1311,14 @@ Packard, K. (2020).
 
 </dd>
       <dt>
-[<a name="pkg:systemfonts">Pedersen et al., 2019</a>]
+[<a name="pkg:systemfonts">Pedersen et al., 2020</a>]
 </dt>
       <dd>
-Pedersen, T. L., Ooms, J., and Govett, D. (2019).
+Pedersen, T. L., Ooms, J., and Govett, D. (2020).
  <em>systemfonts: System Native Font Finding</em>.
- R package version 0.1.1.
+ R package version 0.1.1.9000.
 [ <a href="dvir-luatex-bib_bib.html#pkg:systemfonts">bib</a> | 
-<a href="https://CRAN.R-project.org/package=systemfonts">http</a> ]
+<a href="https://github.com/r-lib/systemfonts">http</a> ]
 
 </dd>
       <dt>

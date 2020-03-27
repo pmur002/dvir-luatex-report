@@ -12,6 +12,12 @@
       "dns": [ "130.216.190.1" ]
     }
 
+    ... OR if running from home ...
+
+    { 
+      "dns": [ "192.168.1.254" ]
+    }
+
     ... and restart the docker server ...
 
     sudo service docker restart

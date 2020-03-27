@@ -6,7 +6,7 @@ MAINTAINER Paul Murrell <paul@stat.auckland.ac.nz>
 # add CRAN PPA
 RUN apt-get update && apt-get install -y apt-transport-https
 RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/' > /etc/apt/sources.list.d/cran.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 
 # Install additional software
 # R stuff
@@ -39,8 +39,8 @@ RUN Rscript -e 'library(devtools); install_version("gdata", "2.18.0", repos="htt
 RUN Rscript -e 'library(devtools); install_version("extrafont", "0.17", repos="https://cran.rstudio.com/")'
 RUN Rscript -e 'extrafont::font_import(prompt=FALSE)'
 RUN Rscript -e 'library(devtools); install_version("hexView", "0.3-4", repos="https://cran.rstudio.com/")'
-RUN apt-get install -y libcairo2-dev
-RUN Rscript -e 'library(devtools); install_github("pmur002/gdtools")'
+RUN apt-get install -y libfontconfig1-dev
+RUN Rscript -e 'library(devtools); install_github("thomasp85/systemfonts")'
 
 # Using COPY will update (invalidate cache) if the tar ball has been modified!
 COPY dvir_0.2-0.tar.gz /tmp/

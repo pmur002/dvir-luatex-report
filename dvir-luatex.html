@@ -105,7 +105,7 @@
     </p>
     <p class="date">
     Version 1:
-Tuesday 17 March 2020
+Wednesday 25 March 2020
   </p>
 
 
@@ -226,7 +226,8 @@ Tuesday 17 March 2020
     makes use of a Lato Light (non-Computer-Modern) font,
     within a paragraph that is 3 inches wide.
   </p>
-<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass[12pt]{standalone}
+<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85} % For more recent versions of LuaTeX
+  \documentclass[12pt]{standalone}
   \usepackage{fontspec} 
   \setmainfont[Mapping=text-tex]{Lato Light} 
   \begin{document}
@@ -315,7 +316,7 @@ Tuesday 17 March 2020
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-7"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
-               comment= LuaTeX output 2020.03.17:2138
+               comment= LuaTeX output 2020.03.25:2132
   bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
   push
   push
@@ -426,7 +427,7 @@ Tuesday 17 March 2020
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-12"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
-               comment= LuaTeX output 2020.03.17:2138
+               comment= LuaTeX output 2020.03.25:2132
   bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
   push
   push
@@ -938,11 +939,11 @@ Tuesday 17 March 2020
 </pre></div>
 </div></div>
     <p>
-    We also need to force FontConfig to look at this new configuration.
+    We also need to force FontConfig to look at this new configuration,
+    which we can do 
+    using the 'systemfonts' package (<a href="#pkg:systemfonts">Pedersen et al., 2020</a>).
   </p>
-<div class="chunk" id="unnamed-chunk-45"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">gdtools</span><span class="hl opt">::</span><span class="hl kwd">fontconfig_reinit</span><span class="hl std">()</span>
-</pre></div>
-<div class="output"><pre class="knitr r">  [1] FALSE
+<div class="chunk" id="unnamed-chunk-45"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">systemfonts</span><span class="hl opt">::</span><span class="hl kwd">reset_font_cache</span><span class="hl std">()</span>
 </pre></div>
 </div></div>
     <p>
@@ -1442,15 +1443,10 @@ Tuesday 17 March 2020
     </h2>
     <p>
     The examples and discussion in this document relate to <a href="https://github.com/pmur002/dvir/releases/tag/v0.2-0">version
-    0.2-0</a> of the 'dvir' package.  The 'dvir' package is still
-    dependent upon a <a href="https://github.com/pmur002/gdtools">fork</a> of the
-    'gdtools' package, which contains a <code>fontconfig_reinit</code>
-    function (to force FontConfig to reload configuration files).  The
-    main 'gdtools' package (<a href="#pkg:gdtools">Gohel et al., 2020</a>) included this
-    function, but then abdicated font-related functionality to the
-    'systemfonts' package (<a href="#pkg:systemfonts">Pedersen et al., 2019</a>) and that
-    package currently has no way to force FontConfig to reload
-    configuration files.
+    0.2-0</a> of the 'dvir' package and
+    <a href="https://github.com/r-lib/systemfonts">the development version</a>
+    of the 'systemfonts' package (for the <code>reset_font_cache</code> 
+    function).
   </p>
     <p>
     This report was generated within a Docker container
@@ -1486,10 +1482,10 @@ Tuesday 17 March 2020
       and
       <a href="luatex-features.tex"><code>luatex-features.tex</code></a>.
       The files for Thomas Rahlf's figure are:
-      <a href="rahlf-plot.R">rahlf-plot.R</a> for the plot and
-      <a href="rahlf-text.tex">rahlf-text.tex</a> for the text.
+      <a href="rahlf-plot.R"><code>rahlf-plot.R</code></a> for the plot and
+      <a href="rahlf-text.tex"><code>rahlf-text.tex</code></a> for the text.
       The example FontConfig configuration file is:
-      <a href="99-custom-font.conf">99-custom-font.conf</a>.
+      <a href="99-custom-font.conf"><code>99-custom-font.conf</code></a>.
     </li>
       <li>
       This report was generated within a 
@@ -1512,17 +1508,6 @@ Tuesday 17 March 2020
       <a name="references">9. References</a>
     </h2>
     <dl>
-      <dt>
-[<a name="pkg:gdtools">Gohel et al., 2020</a>]
-</dt>
-      <dd>
-Gohel, D., Wickham, H., Henry, L., Ooms, J., Qiu, Y., Team, R. C., and
-  RStudio (2020).
- <em>gdtools: Utilities for Graphical Rendering</em>.
- R package version 0.1.7.9001.
-[ <a href="dvir-luatex-bib_bib.html#pkg:gdtools">bib</a> ]
-
-</dd>
       <dt>
 [<a name="luatex">Hagen et al., 2020</a>]
 </dt>
@@ -1608,14 +1593,14 @@ Packard, K. (2020).
 
 </dd>
       <dt>
-[<a name="pkg:systemfonts">Pedersen et al., 2019</a>]
+[<a name="pkg:systemfonts">Pedersen et al., 2020</a>]
 </dt>
       <dd>
-Pedersen, T. L., Ooms, J., and Govett, D. (2019).
+Pedersen, T. L., Ooms, J., and Govett, D. (2020).
  <em>systemfonts: System Native Font Finding</em>.
- R package version 0.1.1.
+ R package version 0.1.1.9000.
 [ <a href="dvir-luatex-bib_bib.html#pkg:systemfonts">bib</a> | 
-<a href="https://CRAN.R-project.org/package=systemfonts">http</a> ]
+<a href="https://github.com/r-lib/systemfonts">http</a> ]
 
 </dd>
       <dt>
