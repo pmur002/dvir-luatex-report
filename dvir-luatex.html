@@ -105,7 +105,7 @@
     </p>
     <p class="date">
     Version 1:
-Wednesday 25 March 2020
+Wednesday 15 April 2020
   </p>
 
 
@@ -316,7 +316,7 @@ Wednesday 25 March 2020
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-7"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
-               comment= LuaTeX output 2020.03.25:2132
+               comment= LuaTeX output 2020.04.15:0238
   bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
   push
   push
@@ -404,7 +404,8 @@ Wednesday 25 March 2020
     for example, text with accents or diacritics, like the
     c-cedilla, ç, in the document below.
   </p>
-<div class="chunk" id="unnamed-chunk-10"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+<div class="chunk" id="unnamed-chunk-10"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85}
+  \documentclass{standalone}
   \usepackage{fontspec} 
   \setmainfont[Mapping=text-tex]{Lato Light} 
   \begin{document}
@@ -427,7 +428,7 @@ Wednesday 25 March 2020
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-12"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
-               comment= LuaTeX output 2020.03.25:2132
+               comment= LuaTeX output 2020.04.15:0238
   bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
   push
   push
@@ -470,7 +471,8 @@ Wednesday 25 March 2020
     This time we have a LuaTeX document that contains the character
     sequence "fi" (in the word "fine").
   </p>
-<div class="chunk" id="unnamed-chunk-14"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+<div class="chunk" id="unnamed-chunk-14"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85}
+  \documentclass{standalone}
   \usepackage{fontspec} 
   \setmainfont[Mapping=text-tex]{Lato Light} 
   \begin{document}
@@ -537,7 +539,8 @@ Wednesday 25 March 2020
     In this LuaTeX document, we have the character sequence "ti"
     (in the word "timely").
   </p>
-<div class="chunk" id="unnamed-chunk-18"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+<div class="chunk" id="unnamed-chunk-18"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85}
+  \documentclass{standalone}
   \usepackage{fontspec} 
   \setmainfont[Mapping=text-tex]{Lato Light} 
   \begin{document}
@@ -927,15 +930,12 @@ Wednesday 25 March 2020
     file, as shown below, and placing that in a directory that 
     Fontconfig can see.
   </p>
-<div class="chunk" id="unnamed-chunk-43"><div class="rcode"><div class="output"><pre class="knitr r">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-  &lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&gt;
-  &lt;fontconfig&gt;
-    &lt;!--include directory containing custom font (within docker container) --&gt;
-    &lt;dir&gt;/home/work/Fonts/&lt;/dir&gt;
-  &lt;/fontconfig&gt;
+
+<div class="chunk" id="unnamed-chunk-44"><div class="rcode"><div class="output"><pre class="knitr r">    &lt;dir&gt;/home/work/Fonts/&lt;/dir&gt;
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-44"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">file.copy</span><span class="hl std">(</span><span class="hl str">&quot;99-custom-font.conf&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;~/.fonts.conf.d/&quot;</span><span class="hl std">,</span> <span class="hl kwc">overwrite</span><span class="hl std">=</span><span class="hl num">TRUE</span><span class="hl std">)</span>
+<div class="chunk" id="unnamed-chunk-45"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">file.copy</span><span class="hl std">(</span><span class="hl str">&quot;99-custom-font.conf&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;~/.fonts.conf.d/&quot;</span><span class="hl std">,</span> <span class="hl kwc">overwrite</span><span class="hl std">=</span><span class="hl num">TRUE</span><span class="hl std">)</span>
+<span class="hl kwd">file.copy</span><span class="hl std">(</span><span class="hl str">&quot;99-custom-font.conf&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;~/fontconfig/conf.d/&quot;</span><span class="hl std">,</span> <span class="hl kwc">overwrite</span><span class="hl std">=</span><span class="hl num">TRUE</span><span class="hl std">)</span>
 </pre></div>
 </div></div>
     <p>
@@ -943,14 +943,14 @@ Wednesday 25 March 2020
     which we can do 
     using the 'systemfonts' package (<a href="#pkg:systemfonts">Pedersen et al., 2020</a>).
   </p>
-<div class="chunk" id="unnamed-chunk-45"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">systemfonts</span><span class="hl opt">::</span><span class="hl kwd">reset_font_cache</span><span class="hl std">()</span>
+<div class="chunk" id="unnamed-chunk-46"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">systemfonts</span><span class="hl opt">::</span><span class="hl kwd">reset_font_cache</span><span class="hl std">()</span>
 </pre></div>
 </div></div>
     <p>
     From R, we can select this font and draw the "ti" ligature
     by asking the font for an 'A' character.
   </p>
-<div class="chunk" id="unnamed-chunk-46"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">png</span><span class="hl std">(</span><span class="hl str">&quot;LatoLight-ti_lig.png&quot;</span><span class="hl std">,</span> <span class="hl kwc">type</span><span class="hl std">=</span><span class="hl str">&quot;cairo&quot;</span><span class="hl std">,</span> <span class="hl kwc">width</span><span class="hl std">=</span><span class="hl num">200</span><span class="hl std">,</span> <span class="hl kwc">height</span><span class="hl std">=</span><span class="hl num">50</span><span class="hl std">)</span>
+<div class="chunk" id="unnamed-chunk-47"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">png</span><span class="hl std">(</span><span class="hl str">&quot;LatoLight-ti_lig.png&quot;</span><span class="hl std">,</span> <span class="hl kwc">type</span><span class="hl std">=</span><span class="hl str">&quot;cairo&quot;</span><span class="hl std">,</span> <span class="hl kwc">width</span><span class="hl std">=</span><span class="hl num">200</span><span class="hl std">,</span> <span class="hl kwc">height</span><span class="hl std">=</span><span class="hl num">50</span><span class="hl std">)</span>
 <span class="hl kwd">grid.text</span><span class="hl std">(</span><span class="hl str">&quot;A&quot;</span><span class="hl std">,</span>
           <span class="hl kwc">gp</span><span class="hl std">=</span><span class="hl kwd">gpar</span><span class="hl std">(</span><span class="hl kwc">fontfamily</span><span class="hl std">=</span><span class="hl str">&quot;custom_font_1&quot;</span><span class="hl std">,</span> <span class="hl kwc">cex</span><span class="hl std">=</span><span class="hl num">3</span><span class="hl std">))</span>
 <span class="hl kwd">dev.off</span><span class="hl std">()</span>
@@ -987,7 +987,7 @@ Wednesday 25 March 2020
     We then draw an 'o', which implicitly adjusts the location, and then
     an 'm', which implicitly adjusts the location.  
   </p>
-<div class="chunk" id="unnamed-chunk-47"><div class="rcode"><div class="output"><pre class="knitr r">  fnt_def_1    fontnum=22, checksum=0, scale=786432, design=655360,
+<div class="chunk" id="unnamed-chunk-48"><div class="rcode"><div class="output"><pre class="knitr r">  fnt_def_1    fontnum=22, checksum=0, scale=786432, design=655360,
                fontname=&quot;LatoLight:mode=node;script=latn;language=DFLT;+tlig;&quot;
   fnt_num_22
   set_char_83  'S'
@@ -1016,18 +1016,18 @@ Wednesday 25 March 2020
     and calculate the width of the letter "o".  ("bigpts" 
     are PostScript's 1/72in, as compared to TeX "pts", which are 1/72.27in.)
   </p>
-<div class="chunk" id="unnamed-chunk-48"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">tg</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">textGrob</span><span class="hl std">(</span><span class="hl str">&quot;o&quot;</span><span class="hl std">,</span> <span class="hl kwc">gp</span><span class="hl std">=</span><span class="hl kwd">gpar</span><span class="hl std">(</span><span class="hl kwc">fontfamily</span><span class="hl std">=</span><span class="hl str">&quot;Lato Light&quot;</span><span class="hl std">))</span>
+<div class="chunk" id="unnamed-chunk-49"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">tg</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">textGrob</span><span class="hl std">(</span><span class="hl str">&quot;o&quot;</span><span class="hl std">,</span> <span class="hl kwc">gp</span><span class="hl std">=</span><span class="hl kwd">gpar</span><span class="hl std">(</span><span class="hl kwc">fontfamily</span><span class="hl std">=</span><span class="hl str">&quot;Lato Light&quot;</span><span class="hl std">))</span>
 <span class="hl kwd">library</span><span class="hl std">(extrafont)</span>
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-49"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">pdf</span><span class="hl std">(</span><span class="hl str">&quot;o-metric.pdf&quot;</span><span class="hl std">)</span>
+<div class="chunk" id="unnamed-chunk-50"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">pdf</span><span class="hl std">(</span><span class="hl str">&quot;o-metric.pdf&quot;</span><span class="hl std">)</span>
 <span class="hl kwd">grid.draw</span><span class="hl std">(tg)</span>
 <span class="hl kwd">convertWidth</span><span class="hl std">(</span><span class="hl kwd">grobWidth</span><span class="hl std">(tg),</span> <span class="hl str">&quot;bigpts&quot;</span><span class="hl std">)</span>
 </pre></div>
 <div class="output"><pre class="knitr r">  [1] 6.696bigpts
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-50"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">dev.off</span><span class="hl std">()</span>
+<div class="chunk" id="unnamed-chunk-51"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">dev.off</span><span class="hl std">()</span>
 </pre></div>
 </div></div>
     <p>
@@ -1035,14 +1035,14 @@ Wednesday 25 March 2020
     but we get a different width (because the Cairo graphics devices
     only get metric values to the nearest "pixel").
   </p>
-<div class="chunk" id="unnamed-chunk-51"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">cairo_pdf</span><span class="hl std">(</span><span class="hl str">&quot;o-metric-cairo.pdf&quot;</span><span class="hl std">)</span>
+<div class="chunk" id="unnamed-chunk-52"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">cairo_pdf</span><span class="hl std">(</span><span class="hl str">&quot;o-metric-cairo.pdf&quot;</span><span class="hl std">)</span>
 <span class="hl kwd">grid.draw</span><span class="hl std">(tg)</span>
 <span class="hl kwd">convertWidth</span><span class="hl std">(</span><span class="hl kwd">grobWidth</span><span class="hl std">(tg),</span> <span class="hl str">&quot;bigpts&quot;</span><span class="hl std">)</span>
 </pre></div>
 <div class="output"><pre class="knitr r">  [1] 7.00000000000001bigpts
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-52"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">dev.off</span><span class="hl std">()</span>
+<div class="chunk" id="unnamed-chunk-53"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">dev.off</span><span class="hl std">()</span>
 </pre></div>
 </div></div>
     <p>
@@ -1067,14 +1067,14 @@ Wednesday 25 March 2020
     Again, the first step is to use TTX to extract metric information
     to an XML format.
   </p>
-<div class="chunk" id="unnamed-chunk-53"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t hmtx -o Fonts/Lato-Light-hmtx.ttx Fonts/Lato-Light.ttf
+<div class="chunk" id="unnamed-chunk-54"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t hmtx -o Fonts/Lato-Light-hmtx.ttx Fonts/Lato-Light.ttf
 </pre></div>
 </div></div>
     <p>
     We can see that the resulting file contains width information
     for each glyph in the font.
   </p>
-<div class="chunk" id="unnamed-chunk-54"><div class="rcode"><div class="source"><pre class="knitr bash">head Fonts/Lato-Light-hmtx.ttx
+<div class="chunk" id="unnamed-chunk-55"><div class="rcode"><div class="source"><pre class="knitr bash">head Fonts/Lato-Light-hmtx.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -1094,10 +1094,10 @@ Wednesday 25 March 2020
     This requires looking at the <strong>head</strong> table from the font,
     in particular the <code>unitsPerEm</code> information.
   </p>
-<div class="chunk" id="unnamed-chunk-55"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t head -o Fonts/Lato-Light-head.ttx Fonts/Lato-Light.ttf
+<div class="chunk" id="unnamed-chunk-56"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t head -o Fonts/Lato-Light-head.ttx Fonts/Lato-Light.ttf
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-56"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 unitsPerEm Fonts/Lato-Light-head.ttx
+<div class="chunk" id="unnamed-chunk-57"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 unitsPerEm Fonts/Lato-Light-head.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">      &lt;checkSumAdjustment value=&quot;0x932003c8&quot;/&gt;
@@ -1115,7 +1115,7 @@ Wednesday 25 March 2020
     scaled to a unit square).  The following code and output shows how
     we can obtain the correct width of a "o" character.
   </p>
-<div class="chunk" id="unnamed-chunk-57"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 '&quot;o&quot;' Fonts/Lato-Light-hmtx.ttx
+<div class="chunk" id="unnamed-chunk-58"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 '&quot;o&quot;' Fonts/Lato-Light-hmtx.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">      &lt;mtx name=&quot;ntilde&quot; width=&quot;1100&quot; lsb=&quot;164&quot;/&gt;
@@ -1127,7 +1127,7 @@ Wednesday 25 March 2020
       &lt;mtx name=&quot;ocircumflex&quot; width=&quot;1116&quot; lsb=&quot;104&quot;/&gt;
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-58"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl num">12</span> <span class="hl opt">*</span> <span class="hl num">1116</span><span class="hl opt">/</span><span class="hl std">(</span><span class="hl num">2000</span><span class="hl opt">/</span><span class="hl num">1000</span><span class="hl std">)</span><span class="hl opt">/</span><span class="hl num">1000</span>
+<div class="chunk" id="unnamed-chunk-59"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl num">12</span> <span class="hl opt">*</span> <span class="hl num">1116</span><span class="hl opt">/</span><span class="hl std">(</span><span class="hl num">2000</span><span class="hl opt">/</span><span class="hl num">1000</span><span class="hl std">)</span><span class="hl opt">/</span><span class="hl num">1000</span>
 </pre></div>
 <div class="output"><pre class="knitr r">  [1] 6.696
 </pre></div>
@@ -1162,7 +1162,7 @@ Wednesday 25 March 2020
     so that is the first name that we will try.  Unfortunately, 
     a font may not contain a glyph named "hyphen".
   </p>
-<div class="chunk" id="unnamed-chunk-59"><div class="rcode"><div class="source"><pre class="knitr bash">grep -c -i hyphen Fonts/Lato-Light-hmtx.ttx
+<div class="chunk" id="unnamed-chunk-60"><div class="rcode"><div class="source"><pre class="knitr bash">grep -c -i hyphen Fonts/Lato-Light-hmtx.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">  0
@@ -1172,7 +1172,7 @@ Wednesday 25 March 2020
     We also try the glyph name <code>uni002D</code>, but in this case,
     there is no glyph of that name either.
   </p>
-<div class="chunk" id="unnamed-chunk-60"><div class="rcode"><div class="source"><pre class="knitr bash">grep -c -i 002D Fonts/Lato-Light-hmtx.ttx
+<div class="chunk" id="unnamed-chunk-61"><div class="rcode"><div class="source"><pre class="knitr bash">grep -c -i 002D Fonts/Lato-Light-hmtx.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">  0
@@ -1182,14 +1182,14 @@ Wednesday 25 March 2020
     Finally, we look in the Unicode cmap table to see which glyph
     is being used for the code point <code>002D</code>.
   </p>
-<div class="chunk" id="unnamed-chunk-61"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t cmap -o Fonts/Lato-Light-cmap.ttx Fonts/Lato-Light.ttf
+<div class="chunk" id="unnamed-chunk-62"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t cmap -o Fonts/Lato-Light-cmap.ttx Fonts/Lato-Light.ttf
 </pre></div>
 
 <div class="output"><pre class="knitr bash">  Dumping &quot;Fonts/Lato-Light.ttf&quot; to &quot;Fonts/Lato-Light-cmap.ttx&quot;...
   Dumping 'cmap' table...
 </pre></div>
 </div></div>
-<div class="chunk" id="unnamed-chunk-62"><div class="rcode"><div class="source"><pre class="knitr bash">xmllint --xpath &quot;//cmap_format_4[@platformID='0']/map[@code='0x2d']&quot; Fonts/Lato-Light-cmap.ttx
+<div class="chunk" id="unnamed-chunk-63"><div class="rcode"><div class="source"><pre class="knitr bash">xmllint --xpath &quot;//cmap_format_4[@platformID='0']/map[@code='0x2d']&quot; Fonts/Lato-Light-cmap.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">  &lt;map code=&quot;0x2d&quot; name=&quot;uni00AD&quot;/&gt;
@@ -1201,7 +1201,7 @@ Wednesday 25 March 2020
     so we look for that name as well.  And there is metric information
     for that glyph.
   </p>
-<div class="chunk" id="unnamed-chunk-63"><div class="rcode"><div class="source"><pre class="knitr bash">grep -i 00AD Fonts/Lato-Light-hmtx.ttx
+<div class="chunk" id="unnamed-chunk-64"><div class="rcode"><div class="source"><pre class="knitr bash">grep -i 00AD Fonts/Lato-Light-hmtx.ttx
 </pre></div>
 
 <div class="output"><pre class="knitr bash">      &lt;mtx name=&quot;uni00AD&quot; width=&quot;740&quot; lsb=&quot;138&quot;/&gt;
@@ -1229,7 +1229,8 @@ Wednesday 25 March 2020
     the first line of text is bold;  and the remaining text is
     typeset in a paragraph with steadily decreasing line length.
   </p>
-<div class="chunk" id="unnamed-chunk-64"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+<div class="chunk" id="unnamed-chunk-65"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85}
+  \documentclass{standalone}
   \usepackage{fontspec} 
   \setmainfont{Economica-regular.ttf}[
     BoldFont=Economica-bold.ttf,
@@ -1264,14 +1265,14 @@ Wednesday 25 March 2020
     are the stretching of space between words (e.g., on the first line
     of non-bold text) and the hyphenation of some words at line breaks.
   </p>
-<div class="chunk" id="unnamed-chunk-65"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">barplot</span><span class="hl std">(GNP</span> <span class="hl opt">~</span> <span class="hl std">Year,</span> <span class="hl kwc">data</span> <span class="hl std">= longley)</span>
+<div class="chunk" id="unnamed-chunk-66"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">barplot</span><span class="hl std">(GNP</span> <span class="hl opt">~</span> <span class="hl std">Year,</span> <span class="hl kwc">data</span> <span class="hl std">= longley)</span>
 <span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-float.tex&quot;</span><span class="hl std">)</span>
 <span class="hl kwd">grid.latex</span><span class="hl std">(latex,</span> <span class="hl kwc">engine</span><span class="hl std">=luatexEngine,</span> <span class="hl kwc">preamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">postamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span>
            <span class="hl kwc">x</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;npc&quot;</span><span class="hl std">)</span> <span class="hl opt">-</span> <span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">5</span><span class="hl std">,</span> <span class="hl str">&quot;in&quot;</span><span class="hl std">),</span>
            <span class="hl kwc">y</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;npc&quot;</span><span class="hl std">)</span> <span class="hl opt">-</span> <span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;in&quot;</span><span class="hl std">),</span>
            <span class="hl kwc">just</span><span class="hl std">=</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;left&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;top&quot;</span><span class="hl std">))</span>
 </pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-65-1.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" class="plot" /></div></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" class="plot" /></div></div>
     <p>
     The next example demonstrates that, in addition to providing 
     an easy way to select a wider range of fonts, adding LuaTeX 
@@ -1287,7 +1288,8 @@ Wednesday 25 March 2020
     These font features are not accessible from R's standard 
     text drawing functions.
   </p>
-<div class="chunk" id="unnamed-chunk-66"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+<div class="chunk" id="unnamed-chunk-67"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85}
+  \documentclass{standalone}
   \usepackage{fontspec} 
   \begin{document}
   \fontsize{14}{16}\selectfont
@@ -1302,10 +1304,10 @@ Wednesday 25 March 2020
     <p>
     The following code draws the resulting typeset text in R.
   </p>
-<div class="chunk" id="unnamed-chunk-67"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-features.tex&quot;</span><span class="hl std">)</span>
+<div class="chunk" id="unnamed-chunk-68"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-features.tex&quot;</span><span class="hl std">)</span>
 <span class="hl kwd">grid.latex</span><span class="hl std">(latex,</span> <span class="hl kwc">engine</span><span class="hl std">=luatexEngine,</span> <span class="hl kwc">preamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">,</span> <span class="hl kwc">postamble</span><span class="hl std">=</span><span class="hl str">&quot;&quot;</span><span class="hl std">)</span>
 </pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-67-1.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" class="plot" /></div></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-68-1.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" class="plot" /></div></div>
     <!--
     Permission to "reproduce" Thomas Rahlf's figure obtained.
   -->
@@ -1326,14 +1328,15 @@ Wednesday 25 March 2020
     is shown below;  note the use of the Lato Light font
     for labelling.
   </p>
-<div class="chunk" id="unnamed-chunk-68"><div class="rimage default"><img src="figure/unnamed-chunk-68-1.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" class="plot" /></div></div>
+<div class="chunk" id="unnamed-chunk-69"><div class="rimage default"><img src="figure/unnamed-chunk-69-1.png" title="plot of chunk unnamed-chunk-69" alt="plot of chunk unnamed-chunk-69" class="plot" /></div></div>
     <p>
     The LaTeX code that describes the text to overlay on the plot is shown below
     (also taken from the book web site).  Important points to note here
     are the use of Lato Light font and the fact that the text is 
     typeset in a two-column format.
   </p>
-<div class="chunk" id="unnamed-chunk-69"><div class="rcode"><div class="output"><pre class="knitr r">  \documentclass{standalone}
+<div class="chunk" id="unnamed-chunk-70"><div class="rcode"><div class="output"><pre class="knitr r">  \RequirePackage{luatex85}
+  \documentclass{standalone}
   \usepackage{multicol}
   \setlength{\columnsep}{1cm}
   \usepackage{fontspec} 
@@ -1368,7 +1371,7 @@ Wednesday 25 March 2020
     but the drawing of the text requires 
     just a single function call to <code>grid.latex</code>.
   </p>
-<div class="chunk" id="unnamed-chunk-70"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl com">## Draw main plot</span>
+<div class="chunk" id="unnamed-chunk-71"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl com">## Draw main plot</span>
 <span class="hl kwd">source</span><span class="hl std">(</span><span class="hl str">&quot;rahlf-plot.R&quot;</span><span class="hl std">)</span>
 <span class="hl std">latex</span> <span class="hl kwb">&lt;-</span> <span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;rahlf-text.tex&quot;</span><span class="hl std">)</span>
 <span class="hl std">gridGraphics</span><span class="hl opt">::</span><span class="hl kwd">grid.echo</span><span class="hl std">()</span>
@@ -1378,7 +1381,7 @@ Wednesday 25 March 2020
            <span class="hl kwc">x</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;cm&quot;</span><span class="hl std">),</span> <span class="hl kwc">y</span><span class="hl std">=</span><span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;npc&quot;</span><span class="hl std">)</span> <span class="hl opt">-</span> <span class="hl kwd">unit</span><span class="hl std">(</span><span class="hl num">1</span><span class="hl std">,</span> <span class="hl str">&quot;cm&quot;</span><span class="hl std">),</span>
            <span class="hl kwc">just</span><span class="hl std">=</span><span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;left&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;top&quot;</span><span class="hl std">))</span>
 </pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-70-1.png" title="plot of chunk unnamed-chunk-70" alt="plot of chunk unnamed-chunk-70" class="plot" /></div></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-71-1.png" title="plot of chunk unnamed-chunk-71" alt="plot of chunk unnamed-chunk-71" class="plot" /></div></div>
     <p>
     One important thing to note is how the text is positioned relative
     to the plot;  the top-left of the text is exactly 1cm in from the top-left
