@@ -43,9 +43,9 @@ RUN apt-get install -y libfontconfig1-dev
 RUN Rscript -e 'library(devtools); install_github("thomasp85/systemfonts")'
 
 # Using COPY will update (invalidate cache) if the tar ball has been modified!
-COPY dvir_0.2-0.tar.gz /tmp/
-RUN R CMD INSTALL /tmp/dvir_0.2-0.tar.gz
-# RUN Rscript -e 'devtools::install_github("pmur002/dvir@v0.2-0")'
+# COPY dvir_0.2-0.tar.gz /tmp/
+# RUN R CMD INSTALL /tmp/dvir_0.2-0.tar.gz
+RUN Rscript -e 'devtools::install_github("pmur002/dvir@v0.2-0")'
 
 RUN apt-get install -y locales && locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8

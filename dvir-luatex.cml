@@ -173,7 +173,7 @@ grid.latex(readLines("luatex-demo.tex"),
     LuaTeX engine, rather than the standard TeX engine; and
     <code>preamble</code> and <code>postamble</code>, which allow
     us to use a complete LuaTeX document as input, rather than
-    automatically wrapping the input with LaTeX begin/end document 
+    automatically wrapping the input with LaTeX begin/end 
     code.
   </p>
   <p>
@@ -288,7 +288,7 @@ luaotfload-tool --find=LatoLight
   <p>
     This font file will allow us to find out much more about the font
     than just its name and that will help us to use the
-    font on other graphics devices and for more complex text.
+    font for more complex text.
   </p>
 
   <h3>Determining which character to draw</h3>
@@ -297,7 +297,7 @@ luaotfload-tool --find=LatoLight
     This means that all of the DVI instructions to draw a character in
     that example are of
     the form <code>set_char_<i>n</i></code>. The <code><i>n</i></code>
-    gives the <a href="https://theasciicode.com.ar/">ASCII encoding</a>
+    gives the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII encoding</a>
     for the character: e.g., 
     <code>set_char_83</code> means a capital 'S' character.
   </p>
@@ -396,8 +396,6 @@ iconv(list(as.raw(as.hexmode(c("fb", "01")))), from="UTF16BE", to="UTF-8")
     These UTF-8 character values are 
     sufficient for drawing on Cairo-based R graphics devices
     at least, because the Cairo graphics device handles UTF-8 text.  
-    We will hopefully come back to the issue of 
-    other graphics devices later.
   </p>
   <p>
     The next example increases the complexity significantly.
@@ -518,7 +516,7 @@ head Fonts/Lato-Light-GlyphOrder.ttx
 grep -C 3 '"S"' Fonts/Lato-Light-GlyphOrder.ttx
   </bash>
   <p>
-    The "fi" ligature glyph is the 42nd glyph.
+    The "fi" ligature glyph is the 42nd glyph (NOT the 64257th).
   </p>
   <bash>
 grep -C 3 FB01 Fonts/Lato-Light-GlyphOrder.ttx
@@ -592,11 +590,12 @@ pyftsubset Fonts/Lato-Light.ttf --gids=2471 --output-file=Fonts/Lato-Light-glyph
     separately from the original font.
     To rename the font and 
     add the encoding, we can convert the font to an
-    XML format, with TTX, insert an encoding (a <str>cmap</str> table),
+    XML format, with TTX, modify the font name (edit the <str>name</str> table),
+    insert an encoding (a <str>cmap</str> table),
     and then convert back to TrueType format.
   </p>
   <p>
-    The following code converts the TrueType font to XML.
+    The following code converts our new mini TrueType font to XML.
   </p>
   <bash echo="FALSE">
 rm Fonts/Lato-Light-glyph02471.ttx
@@ -652,7 +651,8 @@ xml_find_first(ttx, "//TTGlyph[@name = 'glyph02471']")
   <p>
     In this case, the answer is quite simple because the names of the
     glyphs tell us their order;  <code>glyph02471</code> is the third
-    out of these four glyphs.  
+    out of these four glyphs (2471 comes after 294 and 1528, but before
+    3025).  
   </p>
   <p>
     In general, we can match the names of the glyphs from the glyf 
@@ -678,7 +678,7 @@ cat(as.character(cmap), sep="\n")
   </rcode>
   <p>
     A similar approach can be used to give the new font a different name,
-    by editing the <str>name</str> table within the XML.
+    by editing the name table within the XML.
     The <code>name-IDs</code> argument that we saw earlier in the
     call to <code>pyftsubset</code> exports the existing font name,
     so in this step we are just modifying the name table rather than
@@ -711,7 +711,7 @@ xml_replace(name, newName)
     Finally, we write the modified XML to a new file and 
     reverse the conversion from XML back to a TrueType font.
   </p>
-  <rcode>
+  <rcode results="hide">
 write_xml(ttx, "Fonts/Lato-Light-glyph02471-enc.ttx")
   </rcode>
   <bash echo="FALSE">
@@ -759,7 +759,7 @@ file.copy("99-custom-font.conf", "~/fontconfig/conf.d/", overwrite=TRUE)
 systemfonts::reset_font_cache()
   </rcode>
   <p>
-    From R, we can select this font and draw the "ti" ligature
+    From R, we can now select this font and draw the "ti" ligature
     by asking the font for an 'A' character.
   </p>
   <rcode fig.keep="none" results="hide">
@@ -873,7 +873,8 @@ dev.off()
   </p>
   <p>
     Again, the first step is to use TTX to extract metric information
-    to an XML format.
+    to an XML format.  This time we are extracting the <str>hmtx</str>
+    (horizontal metrics) table.
   </p>
   <bash results="hide">
 ttx -t hmtx -o Fonts/Lato-Light-hmtx.ttx Fonts/Lato-Light.ttf
@@ -923,7 +924,9 @@ grep -C 3 '"o"' Fonts/Lato-Light-hmtx.ttx
     will be a <code>set_char_111</code> (6F in hex) in DVI and we can use the
     <a href="https://github.com/adobe-type-tools/agl-aglfn/blob/master/glyphlist.txt">Adobe Glyph List</a>
     to map <code>006F</code> to the glyph name "o".
-    Because the glyphs names in TTX output o not always use the
+  </p>
+  <p>
+    Because the glyphs names in TTX output do not always use the
     Adobe Glyph List names, we also generate glyph names of the form
     <code>uniXXXX</code>, where <code>XXXX</code> is the relevant
     UTF8 code point.  Furthermore, in some fonts, a single glyph 
@@ -969,6 +972,13 @@ xmllint --xpath "//cmap_format_4[@platformID='0']/map[@code='0x2d']" Fonts/Lato-
   <bash>
 grep -i 00AD Fonts/Lato-Light-hmtx.ttx
   </bash>
+  <p>
+    Armed with all of that information, we can now consume DVI output 
+    from LuaTeX and draw the result in R.  Of course, the 'dvi'
+    package wraps all of that detail within a more convenient interface,
+    e.g., the <code>grid.latex</code> function.  The next section
+    provides more demonstrations of the use of that interface.
+  </p>
 
   <h2><a name="examples">Examples</a></h2>
   <p>
@@ -986,7 +996,8 @@ grep -i 00AD Fonts/Lato-Light-hmtx.ttx
     The next example makes it clearer that we are <em>typesetting</em> text
     (using LuaTeX) rather than just relying on R's text-drawing facilities.
     The LuaTeX document below describes text with several interesting 
-    features:  the main font is <a href="https://fonts.google.com/specimen/Economica">Economica</a> (a Google font that has been downloaded to a local file);
+    features:  the main font is <a href="https://fonts.google.com/specimen/Economica">Economica</a> (a Google font that has been downloaded, in TrueType
+    format, to a local file);
     the first line of text is bold;  and the remaining text is
     typeset in a paragraph with steadily decreasing line length.
   </p>
@@ -1040,7 +1051,7 @@ grid.latex(latex, engine=luatexEngine, preamble="", postamble="")
     Permission to "reproduce" Thomas Rahlf's figure obtained.
   -->
   <p>
-    The final example comes from
+    The final example comes from Figure 4.1 in 
     Thomas Rahlf's "Data Visualisation with R" (<a href="#Rahlf2017Data"/>).
     In the original example in the book, an R plot is included within a LaTeX 
     document with the LaTeX text overlaid on the plot using the
@@ -1141,7 +1152,7 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
     try running <code>extrafont::font_import</code> first to make sure that
     'extrafont' knows about all of your fonts and/or install additional
     font packages on your system.
-    The <code>extrafont::font_import()</code> function
+    The <code>extrafont::font_import</code> function
     can also be used to make sure that 'dvir' knows about local fonts that are 
     not installed on the system (like the Economica font used in one
     example in this report).
@@ -1158,7 +1169,7 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
   </p>
   <p>
     This report was generated within a Docker container
-    (see <a href="#Resources">Resources</a> section below).
+    (see the <a href="#Resources"/> section below).
   </p>
 
   <h2><a name="Resources">Resources</a></h2>
@@ -1211,8 +1222,10 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
   <p>
     Murrell, P. (2020). 
     "The Agony and the Ecstacy: Adding LuaTeX support to 'dvir'" 
-    Technical Report 2020-??, Department of Statistics, The University of Auckland. 
-    [ <a href="how-to-cite.bib">bib</a> ] 
+    Technical Report 2020-02, Department of Statistics, The University of Auckland. 
+    [ <a href="how-to-cite.bib">bib</a> |
+      <a href="http://doi.org/10.17608/k6.auckland.12133281">DOI</a> | 
+      <a href="http://stattech.blogs.auckland.ac.nz/2020/04/16/2020-02-the-agony-and-the-ecstacy-adding-luatex-support-to-dvir">http</a> ]
   </p>
 
   <h2><a name="references">References</a></h2>
@@ -1264,11 +1277,11 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
       <a name="terminology"/>
       Some terminology: 
       A <str>TeX document</str> consists of a combination of text to typeset
-      and (low-level) TeX commands to do the typesetting.  
+      and (low-level) TeX commands that describe the typesetting.  
       A <str>LaTeX document</str> consists of a combination of text to
-      typeset and (higher-level) LaTeX commands to do the typesetting.
+      typeset and (higher-level) LaTeX commands the describe the typesetting.
       A <str>LuaTeX document</str> consists of a combination of text
-      to typeset and (higher-level) LaTeX commands to do the typesetting
+      to typeset and (higher-level) LaTeX commands that describe the typesetting
       <em>and</em> (optionally) Lua code to do crazy things.
       A TeX document 
       is processed by a <str>TeX engine</str>, an executable program,

@@ -120,8 +120,8 @@ Wednesday 15 April 2020
     This report describes an update to the 
     R package 'dvir' to add support for the LuaTeX engine.
     The immediate advantage of this support is the ability to
-    use a wider variety of fonts and font features in typeset
-    text within R graphics.
+    draw typeset text in R with 
+    a wider variety of fonts and font features.
   </p>
     <div>
       <h2>Table of Contents:</h2>
@@ -165,8 +165,8 @@ Wednesday 15 April 2020
     is to be able to 
     typeset text using Donald Knuth's TeX system (<a href="#Knuth:1986:TEX:1102013">Knuth, 1986</a>), 
     but render the result in R.
-    The aim is to render the result using R graphics
-    and to obtain identical rendered output compared to the
+    The aim is to render the result using R graphics, but
+    to obtain identical rendered output compared to the
     output 
     produced by a "normal" TeX renderer like <code>pdflatex</code>.
   </p>
@@ -216,7 +216,7 @@ Wednesday 15 April 2020
     From a user perspective, there is not much to tell.
     This is the "ecstacy";
     when everything works as planned, 
-    we get R graphics output that contains Tex-quality typesetting.
+    we get R graphics output that contains TeX-quality typesetting.
   </p>
     <p>
     As a simple example, 
@@ -241,8 +241,10 @@ Wednesday 15 April 2020
 </pre></div>
 </div></div>
     <p>
-    The following R code renders the result of typesetting that
-    document using LuaTeX.
+    The following R code runs LuaTeX to typeset the text
+    and generate DVI output, reads the DVI output into R
+    and generates 'grid' grobs, then draws the grobs on an
+    R graphics device.
   </p>
 <div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">library</span><span class="hl std">(dvir)</span>
 <span class="hl kwd">grid.latex</span><span class="hl std">(</span><span class="hl kwd">readLines</span><span class="hl std">(</span><span class="hl str">&quot;luatex-demo.tex&quot;</span><span class="hl std">),</span>
@@ -254,10 +256,10 @@ Wednesday 15 April 2020
     The new features of this code, compared to the previous version
     of 'dvir', are the new arguments to <code>grid.latex</code>:
     <code>engine</code>, to specify that we want to use the
-    LuaTeX engine, rather than the standard LaTeX engine; 
+    LuaTeX engine, rather than the standard TeX engine; and
     <code>preamble</code> and <code>postamble</code>, which allow
     us to use a complete LuaTeX document as input, rather than
-    automatically wrapping the input with LaTeX begin/end document 
+    automatically wrapping the input with LaTeX begin/end 
     code.
   </p>
     <p>
@@ -316,7 +318,7 @@ Wednesday 15 April 2020
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-7"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
-               comment= LuaTeX output 2020.04.15:0238
+               comment= LuaTeX output 2020.04.15:2137
   bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
   push
   push
@@ -387,7 +389,7 @@ Wednesday 15 April 2020
     <p>
     This font file will allow us to find out much more about the font
     than just its name and that will help us to use the
-    font on other graphics devices and for more complex text.
+    font for more complex text.
   </p>
     <h3>Determining which character to draw</h3>
     <p>
@@ -395,7 +397,7 @@ Wednesday 15 April 2020
     This means that all of the DVI instructions to draw a character in
     that example are of
     the form <code>set_char_<i>n</i></code>. The <code><i>n</i></code>
-    gives the <a href="https://theasciicode.com.ar/">ASCII encoding</a>
+    gives the <a href="https://en.wikipedia.org/wiki/ASCII">ASCII encoding</a>
     for the character: e.g., 
     <code>set_char_83</code> means a capital 'S' character.
   </p>
@@ -428,7 +430,7 @@ Wednesday 15 April 2020
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-12"><div class="rcode"><div class="output"><pre class="knitr r">  pre          version=2, num=25400000, den=473628672, mag=1000,
-               comment= LuaTeX output 2020.04.15:0238
+               comment= LuaTeX output 2020.04.15:2137
   bop          counters=1 0 0 0 0 0 0 0 0 0, p=-1
   push
   push
@@ -531,8 +533,6 @@ Wednesday 15 April 2020
     These UTF-8 character values are 
     sufficient for drawing on Cairo-based R graphics devices
     at least, because the Cairo graphics device handles UTF-8 text.  
-    We will hopefully come back to the issue of 
-    other graphics devices later.
   </p>
     <p>
     The next example increases the complexity significantly.
@@ -682,7 +682,7 @@ Wednesday 15 April 2020
 </pre></div>
 </div></div>
     <p>
-    The "fi" ligature glyph is the 42nd glyph.
+    The "fi" ligature glyph is the 42nd glyph (NOT the 64257th).
   </p>
 <div class="chunk" id="unnamed-chunk-25"><div class="rcode"><div class="source"><pre class="knitr bash">grep -C 3 FB01 Fonts/Lato-Light-GlyphOrder.ttx
 </pre></div>
@@ -775,11 +775,12 @@ Wednesday 15 April 2020
     separately from the original font.
     To rename the font and 
     add the encoding, we can convert the font to an
-    XML format, with TTX, insert an encoding (a <strong>cmap</strong> table),
+    XML format, with TTX, modify the font name (edit the <strong>name</strong> table),
+    insert an encoding (a <strong>cmap</strong> table),
     and then convert back to TrueType format.
   </p>
     <p>
-    The following code converts the TrueType font to XML.
+    The following code converts our new mini TrueType font to XML.
   </p>
 
 <div class="chunk" id="unnamed-chunk-30"><div class="rcode"><div class="source"><pre class="knitr bash">ttx Fonts/Lato-Light-glyph02471.ttf
@@ -848,7 +849,8 @@ Wednesday 15 April 2020
     <p>
     In this case, the answer is quite simple because the names of the
     glyphs tell us their order;  <code>glyph02471</code> is the third
-    out of these four glyphs.  
+    out of these four glyphs (2471 comes after 294 and 1528, but before
+    3025).  
   </p>
     <p>
     In general, we can match the names of the glyphs from the glyf 
@@ -879,7 +881,7 @@ Wednesday 15 April 2020
 </div></div>
     <p>
     A similar approach can be used to give the new font a different name,
-    by editing the <strong>name</strong> table within the XML.
+    by editing the name table within the XML.
     The <code>name-IDs</code> argument that we saw earlier in the
     call to <code>pyftsubset</code> exports the existing font name,
     so in this step we are just modifying the name table rather than
@@ -931,7 +933,12 @@ Wednesday 15 April 2020
     Fontconfig can see.
   </p>
 
-<div class="chunk" id="unnamed-chunk-44"><div class="rcode"><div class="output"><pre class="knitr r">    &lt;dir&gt;/home/work/Fonts/&lt;/dir&gt;
+<div class="chunk" id="unnamed-chunk-44"><div class="rcode"><div class="output"><pre class="knitr r">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;!DOCTYPE fontconfig SYSTEM &quot;fonts.dtd&quot;&gt;
+  &lt;fontconfig&gt;
+    &lt;!--include directory containing custom font (within docker container) --&gt;
+    &lt;dir&gt;/home/work/Fonts/&lt;/dir&gt;
+  &lt;/fontconfig&gt;
 </pre></div>
 </div></div>
 <div class="chunk" id="unnamed-chunk-45"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">file.copy</span><span class="hl std">(</span><span class="hl str">&quot;99-custom-font.conf&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;~/.fonts.conf.d/&quot;</span><span class="hl std">,</span> <span class="hl kwc">overwrite</span><span class="hl std">=</span><span class="hl num">TRUE</span><span class="hl std">)</span>
@@ -947,7 +954,7 @@ Wednesday 15 April 2020
 </pre></div>
 </div></div>
     <p>
-    From R, we can select this font and draw the "ti" ligature
+    From R, we can now select this font and draw the "ti" ligature
     by asking the font for an 'A' character.
   </p>
 <div class="chunk" id="unnamed-chunk-47"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwd">png</span><span class="hl std">(</span><span class="hl str">&quot;LatoLight-ti_lig.png&quot;</span><span class="hl std">,</span> <span class="hl kwc">type</span><span class="hl std">=</span><span class="hl str">&quot;cairo&quot;</span><span class="hl std">,</span> <span class="hl kwc">width</span><span class="hl std">=</span><span class="hl num">200</span><span class="hl std">,</span> <span class="hl kwc">height</span><span class="hl std">=</span><span class="hl num">50</span><span class="hl std">)</span>
@@ -1065,7 +1072,8 @@ Wednesday 15 April 2020
   </p>
     <p>
     Again, the first step is to use TTX to extract metric information
-    to an XML format.
+    to an XML format.  This time we are extracting the <strong>hmtx</strong>
+    (horizontal metrics) table.
   </p>
 <div class="chunk" id="unnamed-chunk-54"><div class="rcode"><div class="source"><pre class="knitr bash">ttx -t hmtx -o Fonts/Lato-Light-hmtx.ttx Fonts/Lato-Light.ttf
 </pre></div>
@@ -1145,7 +1153,9 @@ Wednesday 15 April 2020
     will be a <code>set_char_111</code> (6F in hex) in DVI and we can use the
     <a href="https://github.com/adobe-type-tools/agl-aglfn/blob/master/glyphlist.txt">Adobe Glyph List</a>
     to map <code>006F</code> to the glyph name "o".
-    Because the glyphs names in TTX output o not always use the
+  </p>
+    <p>
+    Because the glyphs names in TTX output do not always use the
     Adobe Glyph List names, we also generate glyph names of the form
     <code>uniXXXX</code>, where <code>XXXX</code> is the relevant
     UTF8 code point.  Furthermore, in some fonts, a single glyph 
@@ -1207,6 +1217,13 @@ Wednesday 15 April 2020
 <div class="output"><pre class="knitr bash">      &lt;mtx name=&quot;uni00AD&quot; width=&quot;740&quot; lsb=&quot;138&quot;/&gt;
 </pre></div>
 </div></div>
+    <p>
+    Armed with all of that information, we can now consume DVI output 
+    from LuaTeX and draw the result in R.  Of course, the 'dvi'
+    package wraps all of that detail within a more convenient interface,
+    e.g., the <code>grid.latex</code> function.  The next section
+    provides more demonstrations of the use of that interface.
+  </p>
     <h2>
       <a name="examples">5. Examples</a>
     </h2>
@@ -1225,7 +1242,8 @@ Wednesday 15 April 2020
     The next example makes it clearer that we are <em>typesetting</em> text
     (using LuaTeX) rather than just relying on R's text-drawing facilities.
     The LuaTeX document below describes text with several interesting 
-    features:  the main font is <a href="https://fonts.google.com/specimen/Economica">Economica</a> (a Google font that has been downloaded to a local file);
+    features:  the main font is <a href="https://fonts.google.com/specimen/Economica">Economica</a> (a Google font that has been downloaded, in TrueType
+    format, to a local file);
     the first line of text is bold;  and the remaining text is
     typeset in a paragraph with steadily decreasing line length.
   </p>
@@ -1259,7 +1277,7 @@ Wednesday 15 April 2020
     The following code combines that typeset text with an R plot (in R).
     First, we draw a simple barplot.
     Then we call <code>grid.latex</code> 
-    from the 'dvir' package to typeset the text using LuaTeX and then
+    from the 'dvir' package to typeset the text using LuaTeX and 
     draw the result within the R plot. Some of the clues that tell
     us this is typeset text rather than just R drawing a character value
     are the stretching of space between words (e.g., on the first line
@@ -1294,9 +1312,9 @@ Wednesday 15 April 2020
   \begin{document}
   \fontsize{14}{16}\selectfont
   \begin{minipage}{3in}
-  characteristick 0123456789\\
+  characteristick 12345\\
   \fontspec{Lato Light}[Ligatures=Discretionary,Numbers=OldStyle]
-  characteristick 0123456789
+  characteristick 12345
   \end{minipage}
   \end{document}
 </pre></div>
@@ -1312,7 +1330,7 @@ Wednesday 15 April 2020
     Permission to "reproduce" Thomas Rahlf's figure obtained.
   -->
     <p>
-    The final example comes from
+    The final example comes from Figure 4.1 in 
     Thomas Rahlf's "Data Visualisation with R" (<a href="#Rahlf2017Data">Rahlf, 2017</a>).
     In the original example in the book, an R plot is included within a LaTeX 
     document with the LaTeX text overlaid on the plot using the
@@ -1433,10 +1451,10 @@ Wednesday 15 April 2020
     For system fonts, 'dvir' uses 'extrafont' to specify the
     font to R graphics.
     If a font is not found, 
-    try running  first to make sure that
+    try running <code>extrafont::font_import</code> first to make sure that
     'extrafont' knows about all of your fonts and/or install additional
     font packages on your system.
-    The <code>extrafont::font_import()</code> function
+    The <code>extrafont::font_import</code> function
     can also be used to make sure that 'dvir' knows about local fonts that are 
     not installed on the system (like the Economica font used in one
     example in this report).
@@ -1453,7 +1471,7 @@ Wednesday 15 April 2020
   </p>
     <p>
     This report was generated within a Docker container
-    (see <a href="#Resources">Resources</a> section below).
+    (see the <a href="#Resources">Resources</a> section below).
   </p>
     <h2>
       <a name="Resources">8. Resources</a>
@@ -1504,8 +1522,10 @@ Wednesday 15 April 2020
     <p>
     Murrell, P. (2020). 
     "The Agony and the Ecstacy: Adding LuaTeX support to 'dvir'" 
-    Technical Report 2020-??, Department of Statistics, The University of Auckland. 
-    [ <a href="how-to-cite.bib">bib</a> ] 
+    Technical Report 2020-02, Department of Statistics, The University of Auckland. 
+    [ <a href="how-to-cite.bib">bib</a> |
+      <a href="http://doi.org/10.17608/k6.auckland.12133281">DOI</a> | 
+      <a href="http://stattech.blogs.auckland.ac.nz/2020/04/16/2020-02-the-agony-and-the-ecstacy-adding-luatex-support-to-dvir">http</a> ]
   </p>
     <h2>
       <a name="references">9. References</a>
@@ -1653,11 +1673,11 @@ Williams, G. and The FontForge Project contributors (2020).
       <p class="footnote"><sup>1</sup><a name="terminology"></a>
       Some terminology: 
       A <strong>TeX document</strong> consists of a combination of text to typeset
-      and (low-level) TeX commands to do the typesetting.  
+      and (low-level) TeX commands that describe the typesetting.  
       A <strong>LaTeX document</strong> consists of a combination of text to
-      typeset and (higher-level) LaTeX commands to do the typesetting.
+      typeset and (higher-level) LaTeX commands the describe the typesetting.
       A <strong>LuaTeX document</strong> consists of a combination of text
-      to typeset and (higher-level) LaTeX commands to do the typesetting
+      to typeset and (higher-level) LaTeX commands that describe the typesetting
       <em>and</em> (optionally) Lua code to do crazy things.
       A TeX document 
       is processed by a <strong>TeX engine</strong>, an executable program,
