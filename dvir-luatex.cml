@@ -74,8 +74,8 @@ options(bitmapType="cairo")
     This report describes an update to the 
     R package 'dvir' to add support for the LuaTeX engine.
     The immediate advantage of this support is the ability to
-    use a wider variety of fonts and font features in typeset
-    text within R graphics.
+    draw typeset text in R with 
+    a wider variety of fonts and font features.
   </p>
 
   <toc/>
@@ -92,8 +92,8 @@ extrafont::font_import(".", prompt=FALSE)
     is to be able to 
     typeset text using Donald Knuth's TeX system (<a href="#Knuth:1986:TEX:1102013"/>), 
     but render the result in R.
-    The aim is to render the result using R graphics
-    and to obtain identical rendered output compared to the
+    The aim is to render the result using R graphics, but
+    to obtain identical rendered output compared to the
     output 
     produced by a "normal" TeX renderer like <code>pdflatex</code>.
   </p>
@@ -141,7 +141,7 @@ grid.latex("$x - \\mu$")
     From a user perspective, there is not much to tell.
     This is the "ecstacy";
     when everything works as planned, 
-    we get R graphics output that contains Tex-quality typesetting.
+    we get R graphics output that contains TeX-quality typesetting.
   </p>
   <p>
     As a simple example, 
@@ -155,8 +155,10 @@ grid.latex("$x - \\mu$")
 cat(readLines("luatex-demo.tex"), sep="\n")
   </rcode>
   <p>
-    The following R code renders the result of typesetting that
-    document using LuaTeX.
+    The following R code runs LuaTeX to typeset the text
+    and generate DVI output, reads the DVI output into R
+    and generates 'grid' grobs, then draws the grobs on an
+    R graphics device.
   </p>
   <rcode fig.width="3" fig.height="1">
 library(dvir)
@@ -168,7 +170,7 @@ grid.latex(readLines("luatex-demo.tex"),
     The new features of this code, compared to the previous version
     of 'dvir', are the new arguments to <code>grid.latex</code>:
     <code>engine</code>, to specify that we want to use the
-    LuaTeX engine, rather than the standard LaTeX engine; 
+    LuaTeX engine, rather than the standard TeX engine; and
     <code>preamble</code> and <code>postamble</code>, which allow
     us to use a complete LuaTeX document as input, rather than
     automatically wrapping the input with LaTeX begin/end document 
@@ -995,7 +997,7 @@ cat(readLines("luatex-float.tex"), sep="\n")
     The following code combines that typeset text with an R plot (in R).
     First, we draw a simple barplot.
     Then we call <code>grid.latex</code> 
-    from the 'dvir' package to typeset the text using LuaTeX and then
+    from the 'dvir' package to typeset the text using LuaTeX and 
     draw the result within the R plot. Some of the clues that tell
     us this is typeset text rather than just R drawing a character value
     are the stretching of space between words (e.g., on the first line
@@ -1136,7 +1138,7 @@ grid.latex(latex, preamble="", postamble="", engine=luatexEngine,
     For system fonts, 'dvir' uses 'extrafont' to specify the
     font to R graphics.
     If a font is not found, 
-    try running  first to make sure that
+    try running <code>extrafont::font_import</code> first to make sure that
     'extrafont' knows about all of your fonts and/or install additional
     font packages on your system.
     The <code>extrafont::font_import()</code> function
