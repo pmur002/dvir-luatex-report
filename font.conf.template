@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <!--include directory containing custom font (within docker container) -->
+  <dir>PATH/Fonts/</dir>
+</fontconfig>
