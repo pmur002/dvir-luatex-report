@@ -27,8 +27,8 @@ Rscript = Rscript
 
 docker:
 	cp ../../dvir_0.2-0.tar.gz .
-	sudo docker build -t pmur002/dvir-luatex .
-	sudo docker run -v $(shell pwd):/home/work/ -w /home/work --rm pmur002/dvir-luatex make dvir-luatex.html
+	sudo docker build --network=host -t pmur002/dvir-luatex .
+	sudo docker run --net=host -v $(shell pwd):/home/work/ -w /home/work --rm pmur002/dvir-luatex make dvir-luatex.html
 
 web:
 	make docker
