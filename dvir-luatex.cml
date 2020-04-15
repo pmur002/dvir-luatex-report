@@ -737,10 +737,16 @@ fc-scan Fonts/Lato-Light-glyph02471-enc.ttf | grep family:
     Fontconfig can see.
   </p>
   <rcode echo="FALSE">
+temp <- readLines("font.conf.template")
+temp[grep("PATH", temp)] <- gsub("PATH", getwd(), temp[grep("PATH", temp)])
+writeLines(temp, "99-custom-font.conf")
+  </rcode>
+  <rcode echo="FALSE">
 cat(readLines("99-custom-font.conf"), sep="\n")
   </rcode>
   <rcode results="hide">
 file.copy("99-custom-font.conf", "~/.fonts.conf.d/", overwrite=TRUE)
+file.copy("99-custom-font.conf", "~/fontconfig/conf.d/", overwrite=TRUE)
   </rcode>
   <p>
     We also need to force FontConfig to look at this new configuration,
